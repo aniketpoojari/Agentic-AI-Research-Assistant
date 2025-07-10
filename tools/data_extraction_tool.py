@@ -27,7 +27,7 @@ class DataExtractionTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Metrics extraction failed: " + str(e)
                 }
         
         @tool
@@ -42,7 +42,7 @@ class DataExtractionTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Entities extraction failed: " + str(e)
                 }
         
         @tool
@@ -57,7 +57,7 @@ class DataExtractionTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Contact info extraction failed: " + str(e)
                 }
         
         @tool
@@ -72,7 +72,7 @@ class DataExtractionTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Table data extraction failed: " + str(e)
                 }
         
         return [extract_key_metrics, extract_entities, extract_contact_info, extract_table_data]

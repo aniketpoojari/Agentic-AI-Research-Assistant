@@ -27,7 +27,7 @@ class FactCheckingTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e),
+                    "error": "Claim verification failed: " + str(e),
                     "claim": claim
                 }
         
@@ -44,7 +44,7 @@ class FactCheckingTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Claim extraction and verification failed: " + str(e)
                 }
         
         @tool
@@ -60,7 +60,7 @@ class FactCheckingTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Claim extraction failed: " + str(e)
                 }
         
         return [verify_claim, extract_and_verify_claims, extract_claims]

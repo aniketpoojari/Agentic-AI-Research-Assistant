@@ -31,7 +31,7 @@ class ConversationMemoryTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Message storage failed: " + str(e)
                 }
         
         @tool
@@ -48,7 +48,7 @@ class ConversationMemoryTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Failed to get conversation history: " + str(e)
                 }
         
         @tool
@@ -63,7 +63,7 @@ class ConversationMemoryTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Failed to get memory stats: " + str(e)
                 }
 
                 

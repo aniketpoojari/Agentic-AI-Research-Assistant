@@ -1,12 +1,12 @@
 """Model loader for different LLM providers."""
 
 import logging
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 from langchain_groq import ChatGroq
-from langchain_openai import ChatOpenAI
+# from langchain_openai import ChatOpenAI
 
 from utils.config_loader import ConfigLoader
-from exception.exception_handling import ConfigurationException
+# from exception.exception_handling import ConfigurationException
 
 logger = logging.getLogger(__name__)
 
@@ -26,21 +26,24 @@ class ModelLoader:
         try:
             if self.model_provider == "groq":
                 self.llm = self._load_groq_model()
-            elif self.model_provider == "openai":
-                self.llm = self._load_openai_model()
-            else:
-                raise ConfigurationException(f"Unsupported model provider: {self.model_provider}")
-            
-            logger.info(f"Successfully loaded {self.model_provider} model")
-            return self.llm
-            
         except Exception as e:
             logger.error(f"Failed to load {self.model_provider} model: {e}")
-            raise ConfigurationException(f"Failed to load model: {e}")
+        # elif self.model_provider == "openai":
+            # self.llm = self._load_openai_model()
+        # else:
+            # raise ConfigurationException(f"Unsupported model provider: {self.model_provider}")
+        
+        logger.info(f"Successfully loaded {self.model_provider} model")
+        return self.llm
+            
+        # except Exception as e:
+        #     logger.error(f"Failed to load {self.model_provider} model: {e}")
+        #     raise ConfigurationException(f"Failed to load model: {e}")
     
     def _load_groq_model(self) -> ChatGroq:
         """Load Groq model."""
         api_key = self.config.get_api_key("groq")
+        # print(api_key)
         model_name = self.config.get("models.groq.model_name", "llama3-8b-8192")
         temperature = self.config.get("models.groq.temperature", 0.1)
         max_tokens = self.config.get("models.groq.max_tokens", 4096)
@@ -52,7 +55,7 @@ class ModelLoader:
             max_tokens=max_tokens
         )
     
-    def _load_openai_model(self) -> ChatOpenAI:
+    '''def _load_openai_model(self) -> ChatOpenAI:
         """Load OpenAI model."""
         api_key = self.config.get_api_key("openai")
         model_name = self.config.get("models.openai.model_name", "gpt-4-turbo-preview")
@@ -64,7 +67,7 @@ class ModelLoader:
             model_name=model_name,
             temperature=temperature,
             max_tokens=max_tokens
-        )
+        )'''
     
     def get_model_info(self) -> Dict[str, Any]:
         """Get information about the loaded model."""

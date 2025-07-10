@@ -28,7 +28,7 @@ class WebSearchTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e),
+                    "error": "Web search failed: " + str(e),
                     "query": query
                 }
         
@@ -45,7 +45,7 @@ class WebSearchTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e),
+                    "error": "Page content extraction failed: " + str(e),
                     "url": url
                 }
         

@@ -28,7 +28,7 @@ class SummarizationTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Summarization failed: " + str(e)
                 }
         
         @tool
@@ -52,7 +52,7 @@ class SummarizationTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Executive summary creation failed: " + str(e)
                 }
         
         @tool
@@ -68,7 +68,7 @@ class SummarizationTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Key points extraction failed: " + str(e)
                 }
         
         return [summarize_text, create_executive_summary, extract_key_points]

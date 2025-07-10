@@ -1,0 +1,213 @@
+2025-07-09 18:36:15,461 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 18:36:15,516 - watchfiles.main - INFO - 4 changes detected
+2025-07-09 18:36:15,684 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:36:15,722 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:36:15,755 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:36:15,792 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:36:15,827 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:36:15,875 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:15,885 - main - INFO - Research workflow initialized successfully
+2025-07-09 18:36:16,232 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:16,588 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:16,945 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:17,302 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:17,658 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:18,015 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:18,375 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:18,731 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:19,088 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:19,496 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:19,900 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:20,306 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:20,711 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:21,117 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:21,522 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:21,927 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:22,332 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:22,736 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:23,094 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:23,502 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:23,906 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:24,308 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:24,713 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:25,116 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:25,520 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:25,924 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:26,341 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:26,745 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:27,150 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:27,555 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:27,958 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:28,364 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:28,719 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:29,127 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:29,531 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:29,937 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:30,340 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:30,743 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:31,150 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:31,553 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:31,957 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:32,361 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:32,764 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:33,166 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:33,571 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:33,977 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:34,382 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:34,786 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:35,190 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:35,544 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:35,951 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:36,356 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:36,809 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:37,172 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:37,580 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:37,988 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:38,394 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:38,802 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:39,204 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:39,606 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:40,015 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:40,419 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:40,822 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:41,225 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:41,634 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:42,036 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:42,442 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:42,848 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:43,250 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:43,654 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:44,060 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:44,465 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:44,869 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:45,274 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:45,640 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:46,049 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:46,458 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:46,865 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:47,270 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:47,678 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:48,081 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:48,484 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:48,888 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:49,291 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:49,696 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:50,062 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:50,468 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:50,872 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:51,274 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:51,688 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:52,091 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:52,498 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:52,903 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:53,308 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:53,711 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:54,114 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:54,517 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:36:54,646 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-09 18:39:32,723 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 18:39:32,861 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:39:32,900 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:39:32,934 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:39:32,935 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:39:32,972 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:39:33,006 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:39:33,062 - main - INFO - Research workflow initialized successfully
+2025-07-09 18:39:33,288 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:39:33,647 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:39:34,005 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:39:34,362 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:39:34,718 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:39:35,073 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:39:35,428 - watchfiles.main - INFO - 1 change detected
+2025-07-09 18:39:35,794 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-09 18:41:09,505 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 18:41:09,642 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:41:09,680 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:41:09,714 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:41:09,751 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:41:09,787 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:41:09,843 - main - INFO - Research workflow initialized successfully
+2025-07-09 18:41:40,204 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-09 18:41:49,286 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 18:41:49,425 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:41:49,464 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:41:49,496 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:41:49,533 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:41:49,568 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:41:49,624 - main - INFO - Research workflow initialized successfully
+2025-07-09 18:51:55,142 - main - INFO - Processing research query: Hi...
+2025-07-09 18:51:55,625 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-09 18:51:55,627 - main - ERROR - Research failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-07-09 18:55:49,258 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-09 18:55:53,989 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 18:55:54,140 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:55:54,177 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:55:54,223 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:55:54,261 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:55:54,296 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:55:54,352 - main - INFO - Research workflow initialized successfully
+2025-07-09 18:56:56,936 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-09 18:57:07,206 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 18:57:07,347 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:57:07,387 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:57:07,421 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:57:07,458 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:57:07,494 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:57:07,549 - main - INFO - Research workflow initialized successfully
+2025-07-09 18:58:50,703 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-09 18:58:52,443 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 18:58:52,578 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:58:52,615 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:58:52,649 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:58:52,685 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:58:52,720 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:58:52,775 - main - INFO - Research workflow initialized successfully
+2025-07-09 18:58:54,526 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 18:58:54,661 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:58:54,698 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:58:54,732 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:58:54,769 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:58:54,805 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 18:58:54,861 - main - INFO - Research workflow initialized successfully
+2025-07-09 18:59:49,565 - main - INFO - Processing research query: Hi...
+2025-07-09 18:59:50,013 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-09 18:59:50,014 - main - ERROR - Research failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-07-09 19:03:34,275 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-09 19:03:36,260 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 19:03:36,405 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:03:36,442 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:03:36,477 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:03:36,514 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:03:36,549 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:03:36,604 - main - INFO - Research workflow initialized successfully
+2025-07-09 19:07:05,621 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-09 19:07:09,088 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 19:07:09,322 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:07:09,383 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:07:09,440 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:07:09,500 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:07:09,562 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:07:09,659 - main - INFO - Research workflow initialized successfully
+2025-07-09 19:21:47,611 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-09 19:21:49,540 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 19:21:49,681 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:21:49,721 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:21:49,753 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:21:49,789 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:21:49,823 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:21:49,879 - main - INFO - Research workflow initialized successfully
+2025-07-09 19:21:51,649 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 19:21:51,784 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:21:51,821 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:21:51,852 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:21:51,888 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:21:51,922 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 19:21:51,977 - main - INFO - Research workflow initialized successfully
+2025-07-09 19:22:00,278 - main - INFO - Processing research query: Hi...
+2025-07-09 19:22:00,656 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-09 19:22:00,658 - main - ERROR - Research failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-07-09 19:22:51,539 - main - INFO - Processing research query: Hi...
+2025-07-09 19:22:51,641 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-09 19:22:51,643 - main - ERROR - Research failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-07-09 19:23:23,324 - main - INFO - Shutting down Dynamic Research Assistant API

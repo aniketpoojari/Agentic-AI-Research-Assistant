@@ -4,6 +4,7 @@ from typing import List
 from langchain.tools import tool
 from dotenv import load_dotenv
 from utils.citation_manager import CitationManager
+# from exception.exception_handling import handle_exceptions
 
 class CitationTool:
     def __init__(self, model_provider: str = "groq"):
@@ -30,7 +31,7 @@ class CitationTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Citation generation failed: " + str(e)
                 }
         
         @tool
@@ -48,7 +49,7 @@ class CitationTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Bibliography creation failed: " + str(e)
                 }
         
         @tool
@@ -66,7 +67,7 @@ class CitationTool:
             except Exception as e:
                 return {
                     "success": False,
-                    "error": str(e)
+                    "error": "Source validation failed: " + str(e)
                 }
         
         return [generate_citations, create_bibliography, validate_sources]
