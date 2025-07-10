@@ -1,18 +1,21 @@
 """Citation tool for the Dynamic Research Assistant."""
 
-from typing import List
 from langchain.tools import tool
 from dotenv import load_dotenv
 from utils.citation_manager import CitationManager
-# from exception.exception_handling import handle_exceptions
 
 class CitationTool:
-    def __init__(self, model_provider: str = "groq"):
-        load_dotenv()
-        self.citation_manager = CitationManager(model_provider)
-        self.citation_tool_list = self._setup_tools()
+    def __init__(self, model_provider="groq"):
+        try:
+            load_dotenv()
+            self.citation_manager = CitationManager(model_provider)
+            self.citation_tool_list = self._setup_tools()
+        except Exception as e:
+            error_msg = f"Error in CitationTool.__init__: {str(e)}"
+            print(error_msg)
+            raise Exception(error_msg)
 
-    def _setup_tools(self) -> List:
+    def _setup_tools(self):
         """Setup all tools for citation management"""
         
         @tool
@@ -29,9 +32,11 @@ class CitationTool:
                     "total_sources": len(sources_list)
                 }
             except Exception as e:
+                error_msg = f"Error in generate_citations: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Citation generation failed: " + str(e)
+                    "error": error_msg
                 }
         
         @tool
@@ -47,9 +52,11 @@ class CitationTool:
                     "style": style
                 }
             except Exception as e:
+                error_msg = f"Error in create_bibliography: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Bibliography creation failed: " + str(e)
+                    "error": error_msg
                 }
         
         @tool
@@ -65,9 +72,11 @@ class CitationTool:
                     "total_sources": len(validated)
                 }
             except Exception as e:
+                error_msg = f"Error in validate_sources: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Source validation failed: " + str(e)
+                    "error": error_msg
                 }
         
         return [generate_citations, create_bibliography, validate_sources]

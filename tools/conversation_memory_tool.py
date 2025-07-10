@@ -1,17 +1,21 @@
 """Conversation memory tool for the Dynamic Research Assistant."""
 
-from typing import List
 from langchain.tools import tool
 from dotenv import load_dotenv
 from utils.memory_manager import MemoryManager
 
 class ConversationMemoryTool:
     def __init__(self):
-        load_dotenv()
-        self.memory_manager = MemoryManager()
-        self.conversation_memory_tool_list = self._setup_tools()
+        try:
+            load_dotenv()
+            self.memory_manager = MemoryManager()
+            self.conversation_memory_tool_list = self._setup_tools()
+        except Exception as e:
+            error_msg = f"Error in ConversationMemoryTool.__init__: {str(e)}"
+            print(error_msg)
+            raise Exception(error_msg)
 
-    def _setup_tools(self) -> List:
+    def _setup_tools(self):
         """Setup all tools for conversation memory"""
         
         @tool
@@ -29,9 +33,11 @@ class ConversationMemoryTool:
                     "message_stored": True
                 }
             except Exception as e:
+                error_msg = f"Error in store_conversation: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Message storage failed: " + str(e)
+                    "error": error_msg
                 }
         
         @tool
@@ -46,9 +52,11 @@ class ConversationMemoryTool:
                     "message_count": len(history)
                 }
             except Exception as e:
+                error_msg = f"Error in get_conversation_history: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Failed to get conversation history: " + str(e)
+                    "error": error_msg
                 }
         
         @tool
@@ -61,10 +69,11 @@ class ConversationMemoryTool:
                     "stats": stats
                 }
             except Exception as e:
+                error_msg = f"Error in get_memory_stats: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Failed to get memory stats: " + str(e)
+                    "error": error_msg
                 }
 
-                
         return [store_conversation, get_conversation_history, get_memory_stats]

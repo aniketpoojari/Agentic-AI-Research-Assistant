@@ -211,3 +211,27 @@
 2025-07-09 19:22:51,641 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
 2025-07-09 19:22:51,643 - main - ERROR - Research failed: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
 2025-07-09 19:23:23,324 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-09 20:09:39,111 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-09 20:09:39,117 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-09 20:09:39,118 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-09 20:09:39,266 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 20:09:39,271 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-09 20:09:39,282 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-09 20:09:39,282 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-09 20:09:39,304 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 20:09:39,304 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-09 20:09:39,317 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-09 20:09:39,317 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-09 20:09:39,338 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 20:09:39,342 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-09 20:09:39,354 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-09 20:09:39,355 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-09 20:09:39,375 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 20:09:39,389 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-09 20:09:39,389 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-09 20:09:39,409 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-09 20:09:39,465 - main - INFO - Research workflow initialized successfully
+2025-07-09 20:11:35,962 - main - INFO - Processing research query: Hi... (Session: cb014475-7eab-49bc-8feb-10de005da853)
+2025-07-09 20:11:36,209 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-09 20:11:36,210 - main - ERROR - Research failed: Error in run_research: Error in orchestrator_agent: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-07-09 20:16:51,343 - main - INFO - Shutting down Dynamic Research Assistant API

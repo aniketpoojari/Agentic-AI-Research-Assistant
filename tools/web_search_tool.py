@@ -1,17 +1,21 @@
 """Web search tool for the Dynamic Research Assistant."""
 
-from typing import List
 from langchain.tools import tool
 from dotenv import load_dotenv
 from utils.websearch import WebSearch
 
 class WebSearchTool:
     def __init__(self):
-        load_dotenv()
-        self.web_search = WebSearch()
-        self.web_search_tool_list = self._setup_tools()
+        try:
+            load_dotenv()
+            self.web_search = WebSearch()
+            self.web_search_tool_list = self._setup_tools()
+        except Exception as e:
+            error_msg = f"Error in WebSearchTool.__init__: {str(e)}"
+            print(error_msg)
+            raise Exception(error_msg)
 
-    def _setup_tools(self) -> List:
+    def _setup_tools(self):
         """Setup all tools for web search"""
         
         @tool
@@ -26,9 +30,11 @@ class WebSearchTool:
                     "total_results": len(results)
                 }
             except Exception as e:
+                error_msg = f"Error in search_web: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Web search failed: " + str(e),
+                    "error": error_msg,
                     "query": query
                 }
         
@@ -43,9 +49,11 @@ class WebSearchTool:
                     "url": url
                 }
             except Exception as e:
+                error_msg = f"Error in get_page_content: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Page content extraction failed: " + str(e),
+                    "error": error_msg,
                     "url": url
                 }
         

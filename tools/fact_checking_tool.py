@@ -1,18 +1,21 @@
 """Fact-checking tool for the Dynamic Research Assistant."""
 
-import os
-from typing import List
 from langchain.tools import tool
 from dotenv import load_dotenv
 from utils.fact_checker import FactChecker
 
 class FactCheckingTool:
-    def __init__(self, model_provider: str = "groq"):
-        load_dotenv()
-        self.fact_checker = FactChecker(model_provider)
-        self.fact_checking_tool_list = self._setup_tools()
+    def __init__(self, model_provider="groq"):
+        try:
+            load_dotenv()
+            self.fact_checker = FactChecker(model_provider)
+            self.fact_checking_tool_list = self._setup_tools()
+        except Exception as e:
+            error_msg = f"Error in FactCheckingTool.__init__: {str(e)}"
+            print(error_msg)
+            raise Exception(error_msg)
 
-    def _setup_tools(self) -> List:
+    def _setup_tools(self):
         """Setup all tools for fact-checking"""
         
         @tool
@@ -25,9 +28,11 @@ class FactCheckingTool:
                     "verification_result": result
                 }
             except Exception as e:
+                error_msg = f"Error in verify_claim: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Claim verification failed: " + str(e),
+                    "error": error_msg,
                     "claim": claim
                 }
         
@@ -42,9 +47,11 @@ class FactCheckingTool:
                     "total_claims": len(results)
                 }
             except Exception as e:
+                error_msg = f"Error in extract_and_verify_claims: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Claim extraction and verification failed: " + str(e)
+                    "error": error_msg
                 }
         
         @tool
@@ -58,9 +65,11 @@ class FactCheckingTool:
                     "total_claims": len(claims)
                 }
             except Exception as e:
+                error_msg = f"Error in extract_claims: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Claim extraction failed: " + str(e)
+                    "error": error_msg
                 }
         
         return [verify_claim, extract_and_verify_claims, extract_claims]

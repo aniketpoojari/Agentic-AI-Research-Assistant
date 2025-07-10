@@ -1,18 +1,21 @@
 """Data extraction tool for the Dynamic Research Assistant."""
 
-import os
-from typing import List
 from langchain.tools import tool
 from dotenv import load_dotenv
 from utils.data_extractor import DataExtractor
 
 class DataExtractionTool:
-    def __init__(self, model_provider: str = "groq"):
-        load_dotenv()
-        self.data_extractor = DataExtractor(model_provider)
-        self.data_extraction_tool_list = self._setup_tools()
+    def __init__(self, model_provider="groq"):
+        try:
+            load_dotenv()
+            self.data_extractor = DataExtractor(model_provider)
+            self.data_extraction_tool_list = self._setup_tools()
+        except Exception as e:
+            error_msg = f"Error in DataExtractionTool.__init__: {str(e)}"
+            print(error_msg)
+            raise Exception(error_msg)
 
-    def _setup_tools(self) -> List:
+    def _setup_tools(self):
         """Setup all tools for data extraction"""
         
         @tool
@@ -25,9 +28,11 @@ class DataExtractionTool:
                     "metrics": metrics
                 }
             except Exception as e:
+                error_msg = f"Error in extract_key_metrics: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Metrics extraction failed: " + str(e)
+                    "error": error_msg
                 }
         
         @tool
@@ -40,9 +45,11 @@ class DataExtractionTool:
                     "entities": entities
                 }
             except Exception as e:
+                error_msg = f"Error in extract_entities: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Entities extraction failed: " + str(e)
+                    "error": error_msg
                 }
         
         @tool
@@ -55,9 +62,11 @@ class DataExtractionTool:
                     "contact_info": contact_info
                 }
             except Exception as e:
+                error_msg = f"Error in extract_contact_info: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Contact info extraction failed: " + str(e)
+                    "error": error_msg
                 }
         
         @tool
@@ -70,9 +79,11 @@ class DataExtractionTool:
                     "table_data": table_data
                 }
             except Exception as e:
+                error_msg = f"Error in extract_table_data: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Table data extraction failed: " + str(e)
+                    "error": error_msg
                 }
         
         return [extract_key_metrics, extract_entities, extract_contact_info, extract_table_data]

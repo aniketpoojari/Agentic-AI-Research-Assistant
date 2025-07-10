@@ -1,17 +1,21 @@
 """Summarization tool for the Dynamic Research Assistant."""
 
-from typing import List
 from langchain.tools import tool
 from dotenv import load_dotenv
 from utils.summarizer import Summarizer
 
 class SummarizationTool:
-    def __init__(self, model_provider: str = "groq"):
-        load_dotenv()
-        self.summarizer = Summarizer(model_provider)
-        self.summarization_tool_list = self._setup_tools()
+    def __init__(self, model_provider="groq"):
+        try:
+            load_dotenv()
+            self.summarizer = Summarizer(model_provider)
+            self.summarization_tool_list = self._setup_tools()
+        except Exception as e:
+            error_msg = f"Error in SummarizationTool.__init__: {str(e)}"
+            print(error_msg)
+            raise Exception(error_msg)
 
-    def _setup_tools(self) -> List:
+    def _setup_tools(self):
         """Setup all tools for summarization"""
         
         @tool
@@ -26,9 +30,11 @@ class SummarizationTool:
                     "summary_length": len(summary)
                 }
             except Exception as e:
+                error_msg = f"Error in summarize_text: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Summarization failed: " + str(e)
+                    "error": error_msg
                 }
         
         @tool
@@ -50,9 +56,11 @@ class SummarizationTool:
                     "documents_processed": len(docs)
                 }
             except Exception as e:
+                error_msg = f"Error in create_executive_summary: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Executive summary creation failed: " + str(e)
+                    "error": error_msg
                 }
         
         @tool
@@ -66,9 +74,11 @@ class SummarizationTool:
                     "num_points": len(key_points)
                 }
             except Exception as e:
+                error_msg = f"Error in extract_key_points: {str(e)}"
+                print(error_msg)
                 return {
                     "success": False,
-                    "error": "Key points extraction failed: " + str(e)
+                    "error": error_msg
                 }
         
         return [summarize_text, create_executive_summary, extract_key_points]
