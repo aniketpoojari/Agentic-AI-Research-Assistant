@@ -3,49 +3,47 @@
 import os
 import yaml
 from pathlib import Path
-from dotenv import load_dotenv
+from typing import Any, Optional
+from dotenv import dotenv_values
 
 class ConfigLoader:
-    """Loads and manages configuration from YAML files and environment variables."""
+    """Loads configuration from YAML files and environment variables."""
     
-    def __init__(self, config_path="config/config.yaml"):
+    def __init__(self, config_file: str = "config/config.yaml"):
         try:
-            self.config_path = Path(config_path)
-            self.config = {}
-            self._load_config()
+            # Load .env file directly into a dictionary
+            self.env_vars = dotenv_values(".env")
+            
+            self.config_file = config_file
+            self.config_data = {}
+            self.load_config()
+            
         except Exception as e:
             error_msg = f"Error in ConfigLoader.__init__: {str(e)}"
             print(error_msg)
             raise Exception(error_msg)
     
-    def _load_config(self):
-        """Load configuration from YAML file and environment variables."""
+    def load_config(self):
+        """Load configuration from YAML file."""
         try:
-            # Load environment variables
-            load_dotenv()
-            
-            # Load YAML configuration
-            if self.config_path.exists():
-                with open(self.config_path, 'r') as file:
-                    self.config = yaml.safe_load(file) or {}
+            config_path = Path(self.config_file)
+            if config_path.exists():
+                with open(config_path, 'r') as file:
+                    self.config_data = yaml.safe_load(file) or {}
             else:
-                print(f"Config file not found: {self.config_path}")
-                self.config = {}
+                print(f"Warning: Config file {self.config_file} not found. Using defaults.")
+                self.config_data = {}
                 
-        except yaml.YAMLError as e:
-            error_msg = f"Error parsing YAML config in _load_config: {str(e)}"
-            print(error_msg)
-            raise Exception(error_msg)
         except Exception as e:
-            error_msg = f"Error loading config in _load_config: {str(e)}"
+            error_msg = f"Error loading config: {str(e)}"
             print(error_msg)
-            raise Exception(error_msg)
+            self.config_data = {}
     
-    def get(self, key, default=None):
-        """Get configuration value using dot notation (e.g., 'models.groq.model_name')."""
+    def get(self, key: str, default: Any = None) -> Any:
+        """Get configuration value using dot notation."""
         try:
             keys = key.split('.')
-            value = self.config
+            value = self.config_data
             
             for k in keys:
                 if isinstance(value, dict) and k in value:
@@ -56,42 +54,44 @@ class ConfigLoader:
             return value
             
         except Exception as e:
-            error_msg = f"Error in get for key {key}: {str(e)}"
-            print(error_msg)
+            print(f"Error getting config key {key}: {e}")
             return default
     
-    def get_env(self, key, default=None):
-        """Get environment variable."""
+    def get_env(self, key: str, default: Optional[str] = None) -> Optional[str]:
+        """Get environment variable from .env file directly."""
         try:
-            return os.getenv(key, default)
+            # First check .env file, then fall back to system env
+            return self.env_vars.get(key, os.getenv(key, default))
         except Exception as e:
-            error_msg = f"Error in get_env for key {key}: {str(e)}"
-            print(error_msg)
+            print(f"Error getting environment variable {key}: {e}")
             return default
     
-    def get_api_key(self, service):
-        """Get API key for a specific service."""
+    def get_api_key(self, provider: str) -> Optional[str]:
+        """Get API key for a specific provider."""
         try:
-            key = f"{service.upper()}_API_KEY"
-            api_key = self.get_env(key)
+            key_mapping = {
+                "groq": "GROQ_API_KEY",
+                "openai": "OPENAI_API_KEY", 
+                "anthropic": "ANTHROPIC_API_KEY"
+            }
             
-            if not api_key:
-                error_msg = f"API key not found for {service}. Please set {key}"
-                print(error_msg)
-                raise Exception(error_msg)
-            
-            return api_key
-            
+            env_key = key_mapping.get(provider.lower())
+            if env_key:
+                return self.get_env(env_key)
+            else:
+                print(f"Unknown provider: {provider}")
+                return None
+                
         except Exception as e:
-            error_msg = f"Error in get_api_key for service {service}: {str(e)}"
-            print(error_msg)
-            raise Exception(error_msg)
+            print(f"Error getting API key for {provider}: {e}")
+            return None
     
     def reload(self):
-        """Reload configuration from file."""
+        """Reload configuration and .env file."""
         try:
-            self._load_config()
+            # Reload .env file
+            self.env_vars = dotenv_values(".env")
+            # Reload config file
+            self.load_config()
         except Exception as e:
-            error_msg = f"Error in reload: {str(e)}"
-            print(error_msg)
-            raise Exception(error_msg)
+            print(f"Error reloading config: {e}")
