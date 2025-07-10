@@ -67,12 +67,24 @@ class ModelLoader:
             
             logger.info(f"Loading Groq model: {model_name}")
             
-            return ChatGroq(
+            llm = ChatGroq(
                 groq_api_key=api_key,
                 model_name=model_name,
                 temperature=temperature,
                 max_tokens=max_tokens
             )
+
+            # test the llm
+            test_prompt = "Hello, please respond with 'OK' if you can understand this message."
+            response = llm.invoke(test_prompt)
+            if hasattr(response, 'content') and response.content:
+                logger.info("Model validation successful")
+            else:
+                error_msg = "Model validation failed - no response content"
+                logger.error(error_msg)
+                raise Exception(error_msg)
+            
+            return llm
             
         except Exception as e:
             error_msg = f"Error in _load_groq_model: {str(e)}"
