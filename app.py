@@ -4,13 +4,9 @@ import streamlit as st
 import requests
 import uuid
 from datetime import datetime
-from utils.config_loader import ConfigLoader
 
-# Configuration
-config = ConfigLoader()
-API_HOST = config.get_env("API_HOST", "localhost")
-API_PORT = config.get_env("API_PORT", 8000)
-RESEARCH_ENDPOINT = f"http://{API_HOST}:{API_PORT}/research"
+
+RESEARCH_ENDPOINT = "http://127.0.0.1:8000/research"
 
 def initialize_session_state():
     """Initialize session state variables."""

@@ -16,14 +16,18 @@ from tools.citation_tool import CitationTool
 from tools.conversation_memory_tool import ConversationMemoryTool
 
 from datetime import datetime
-import logging
+from logger.logging import get_logger
+from langsmith import Client
 
-logger = logging.getLogger(__name__)
-
+logger = get_logger(__name__)
 
 class ResearchAssistantWorkflow:
     def __init__(self, model_provider="groq"):
         try:
+
+            client = Client()
+
+            # Initialize LLM            
             self.model_loader = ModelLoader(model_provider=model_provider)
             self.llm = self.model_loader.load_llm()
             

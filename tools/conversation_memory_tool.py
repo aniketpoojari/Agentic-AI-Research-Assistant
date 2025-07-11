@@ -1,7 +1,6 @@
 """Conversation memory tool for the Dynamic Research Assistant."""
 
 from langchain.tools import tool
-from dotenv import load_dotenv
 from utils.memory_manager import MemoryManager
 from logger.logging import get_logger
 
@@ -10,7 +9,6 @@ logger = get_logger(__name__)
 class ConversationMemoryTool:
     def __init__(self):
         try:
-            load_dotenv()
             self.memory_manager = MemoryManager()
             self.conversation_memory_tool_list = self._setup_tools()
             logger.info("ConversationMemoryTool Class Initialized")

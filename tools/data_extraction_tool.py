@@ -1,7 +1,6 @@
 """Data extraction tool for the Dynamic Research Assistant."""
 
 from langchain.tools import tool
-from dotenv import load_dotenv
 from utils.data_extractor import DataExtractor
 from logger.logging import get_logger
 
@@ -10,7 +9,6 @@ logger = get_logger(__name__)
 class DataExtractionTool:
     def __init__(self, model_provider="groq"):
         try:
-            load_dotenv()
             self.data_extractor = DataExtractor(model_provider)
             self.data_extraction_tool_list = self._setup_tools()
             logger.info("DataExtractionTool Class Initialized")

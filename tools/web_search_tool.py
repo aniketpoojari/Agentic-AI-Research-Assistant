@@ -1,7 +1,6 @@
 """Web search tool for the Dynamic Research Assistant."""
 
 from langchain.tools import tool
-from dotenv import load_dotenv
 from utils.websearch import WebSearch
 from logger.logging import get_logger
 
@@ -10,7 +9,6 @@ logger = get_logger(__name__)
 class WebSearchTool:
     def __init__(self):
         try:
-            load_dotenv()
             self.web_search = WebSearch()
             self.web_search_tool_list = self._setup_tools()
             logger.info("WebSearchTool Class Initialized")

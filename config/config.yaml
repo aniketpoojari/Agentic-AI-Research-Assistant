@@ -1,11 +1,4 @@
-# API Configuration
-api:
-  debug: true
-  title: "Dynamic Research Assistant API"
-  description: "Advanced AI research assistant with dynamic workflow management"
-  version: "1.0.0"
-
-# Search Configuration
+# API Configurati# Search Configuration
 search:
   timeout: 30
   user_agent: "Research Assistant Bot"

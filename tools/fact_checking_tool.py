@@ -1,7 +1,6 @@
 """Fact-checking tool for the Dynamic Research Assistant."""
 
 from langchain.tools import tool
-from dotenv import load_dotenv
 from utils.fact_checker import FactChecker
 from logger.logging import get_logger
 
@@ -10,7 +9,6 @@ logger = get_logger(__name__)
 class FactCheckingTool:
     def __init__(self, model_provider="groq"):
         try:
-            load_dotenv()
             self.fact_checker = FactChecker(model_provider)
             self.fact_checking_tool_list = self._setup_tools()
             logger.info("FactCheckingTool Class Initialized")

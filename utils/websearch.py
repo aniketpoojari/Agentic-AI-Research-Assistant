@@ -38,7 +38,7 @@ class WebSearch:
             logger.info(f"Starting web search for query: {query[:100]}...")
             
             # Try Tavily first if API key is available
-            tavily_key = self.config.get_env("TAVILY_API_KEY")
+            tavily_key = self.config.get_api_key("tavily")
             if tavily_key:
                 try:
                     results = self._search_tavily(query, num_results)

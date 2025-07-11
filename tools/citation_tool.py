@@ -1,7 +1,6 @@
 """Citation tool for the Dynamic Research Assistant."""
 
 from langchain.tools import tool
-from dotenv import load_dotenv
 from utils.citation_manager import CitationManager
 from logger.logging import get_logger
 import json
@@ -11,7 +10,6 @@ logger = get_logger(__name__)
 class CitationTool:
     def __init__(self, model_provider="groq"):
         try:
-            load_dotenv()
             self.citation_manager = CitationManager(model_provider)
             self.citation_tool_list = self._setup_tools()
             logger.info("CitationTool Class Initialized")

@@ -152,7 +152,7 @@ async def research_endpoint(
 if __name__ == "__main__":
     try:
         config = ConfigLoader()
-        host = config.get_env("API_HOST", "0.0.0.0")
+        host = config.get_env("API_HOST", "127.0.0.1")
         port = config.get_env("API_PORT", 8000)
         
         logger.info(f"Starting server on {host}:{port}")

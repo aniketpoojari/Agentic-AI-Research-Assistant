@@ -1,7 +1,6 @@
 """Summarization tool for the Dynamic Research Assistant."""
 
 from langchain.tools import tool
-from dotenv import load_dotenv
 from utils.summarizer import Summarizer
 from logger.logging import get_logger
 import json
@@ -11,7 +10,6 @@ logger = get_logger(__name__)
 class SummarizationTool:
     def __init__(self, model_provider="groq"):
         try:
-            load_dotenv()
             self.summarizer = Summarizer(model_provider)
             self.summarization_tool_list = self._setup_tools()
             logger.info("SummarizationTool Class Initialized")

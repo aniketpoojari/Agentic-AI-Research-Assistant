@@ -9,12 +9,9 @@ logger = get_logger(__name__)
 class MemoryManager:
     """Manages conversation memory and research context."""
     
-    def __init__(self, memory_limit=1000):
+    def __init__(self):
         try:
-            self.memory_limit = memory_limit
             self.conversations = defaultdict(list)
-            self.research_context = defaultdict(dict)
-            self.session_data = defaultdict(dict)
             logger.info("MemoryManager Utility Class Initialized")
 
         except Exception as e:
