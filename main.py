@@ -1,4 +1,4 @@
-"""FastAPI application for the Dynamic Research Assistant."""
+"""FastAPI application for the Dynamic Research Assistant with Enhanced Orchestrator."""
 
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
@@ -27,12 +27,12 @@ async def lifespan(app: FastAPI):
     
     # Startup
     try:
-        logger.info("Starting Dynamic Research Assistant API")
+        logger.info("Starting Dynamic Research Assistant API with Enhanced Orchestrator")
         config = ConfigLoader()
         model_provider = config.get_env("DEFAULT_MODEL_PROVIDER", "groq")
         workflow_instance = ResearchAssistantWorkflow(model_provider=model_provider)
         workflow_instance.build_graph()
-        logger.info("Research workflow initialized successfully")
+        logger.info("Enhanced research workflow initialized successfully")
     except Exception as e:
         error_msg = f"Failed to initialize workflow: {str(e)}"
         logger.error(error_msg)
@@ -45,8 +45,8 @@ async def lifespan(app: FastAPI):
     try:
         logger.info("Shutting down Dynamic Research Assistant API")
         if workflow_instance:
-            # Cleanup if needed
-            pass
+            # Clear execution traces on shutdown
+            workflow_instance.clear_execution_trace()
     except Exception as e:
         logger.error(f"Error during shutdown: {e}")
 
@@ -54,9 +54,9 @@ async def lifespan(app: FastAPI):
 try:
     config = ConfigLoader()
     app = FastAPI(
-        title=config.get("api.title", "Dynamic Research Assistant API"),
-        description=config.get("api.description", "Advanced AI research assistant with dynamic workflow management"),
-        version=config.get("api.version", "1.0.0"),
+        title=config.get("api.title", "Dynamic Research Assistant API - Enhanced"),
+        description=config.get("api.description", "Advanced AI research assistant with dynamic orchestrator and conditional tool routing"),
+        version=config.get("api.version", "2.0.0"),
         lifespan=lifespan
     )
 except Exception as e:
@@ -88,9 +88,16 @@ async def root():
     """Root endpoint"""
     try:
         return {
-            "message": "Dynamic Research Assistant API",
-            "version": "1.0.0",
+            "message": "Dynamic Research Assistant API - Enhanced Orchestrator",
+            "version": "2.0.0",
             "status": "active",
+            "features": [
+                "Dynamic tool selection",
+                "Conditional routing",
+                "Execution tracing",
+                "Graph visualization",
+                "Adaptive workflows"
+            ],
             "timestamp": datetime.now().isoformat()
         }
     except Exception as e:
@@ -105,6 +112,8 @@ async def health_check():
         return {
             "status": "healthy",
             "workflow_initialized": workflow_instance is not None,
+            "orchestrator_type": "enhanced_dynamic",
+            "max_iterations": workflow_instance.max_tool_iterations if workflow_instance else None,
             "timestamp": datetime.now().isoformat()
         }
     except Exception as e:
@@ -117,7 +126,7 @@ async def research_endpoint(
     request_data: Dict[str, Any],
     workflow: ResearchAssistantWorkflow = Depends(get_workflow)
 ):
-    """Main research endpoint - automatically determines which tools to use"""
+    """Enhanced research endpoint with dynamic orchestrator"""
     try:
         # Extract query data
         query = request_data.get("query", "").strip()
@@ -129,10 +138,16 @@ async def research_endpoint(
         max_results = request_data.get("max_results", 10)
         context = request_data.get("context", {})
         
-        logger.info(f"Processing research query: {query[:100]}... (Session: {session_id})")
+        logger.info(f"Processing research query with enhanced orchestrator: {query[:100]}... (Session: {session_id})")
         
-        # Run research through the workflow
+        # Clear previous execution trace for this request
+        workflow.clear_execution_trace()
+        
+        # Run research through the enhanced workflow
         result = workflow.run_research(query, session_id)
+        
+        # Get execution trace
+        execution_trace = workflow.get_execution_trace()
         
         # Extract response from workflow result
         if result and result.get("messages"):
@@ -141,7 +156,7 @@ async def research_endpoint(
         else:
             response_content = "No response generated"
         
-        # Create structured response
+        # Create enhanced structured response
         research_result = {
             "query": query,
             "session_id": session_id,
@@ -152,11 +167,33 @@ async def research_endpoint(
             "fact_check_results": [],
             "extracted_data": [],
             "agent_responses": [],
+            "execution_trace": execution_trace,
+            "tool_usage_stats": execution_trace.get("tool_usage_stats", {}),
+            "total_execution_steps": execution_trace.get("total_steps", 0),
             "total_execution_time": None,
             "created_at": datetime.now().isoformat(),
-            "workflow_path": ["orchestrator", "research_agent", "tools"],
-            "context": context
+            "workflow_path": ["enhanced_orchestrator", "dynamic_tool_executor", "research_agent"],
+            "context": context,
+            "orchestrator_decisions": []
         }
+        
+        # Extract orchestrator decisions and tool usage from trace
+        try:
+            for step in execution_trace.get("trace", []):
+                if step.get("step") == "tool_strategy_determined":
+                    research_result["orchestrator_decisions"].append({
+                        "timestamp": step.get("timestamp"),
+                        "strategy": step.get("details", {}).get("strategy"),
+                        "step": "strategy_selection"
+                    })
+                elif step.get("step") == "tools_called":
+                    research_result["orchestrator_decisions"].append({
+                        "timestamp": step.get("timestamp"),
+                        "tools": step.get("details", {}).get("tools"),
+                        "step": "tool_execution"
+                    })
+        except Exception as e:
+            logger.warning(f"Could not extract orchestrator decisions: {e}")
         
         # Try to extract additional information from tool calls if available
         try:
@@ -168,18 +205,85 @@ async def research_endpoint(
                             research_result["agent_responses"].append({
                                 "agent_type": tool_name,
                                 "success": True,
-                                "execution_time": None
+                                "execution_time": None,
+                                "orchestrator_selected": True
                             })
         except Exception as e:
             logger.warning(f"Could not extract tool call information: {e}")
         
-        logger.info(f"Research completed for query: {query[:100]}... (Session: {session_id})")
+        logger.info(f"Enhanced research completed for query: {query[:100]}... (Session: {session_id})")
+        logger.info(f"Execution steps: {research_result['total_execution_steps']}, Tools used: {list(research_result['tool_usage_stats'].keys())}")
+        
         return research_result
         
     except HTTPException:
         raise
     except Exception as e:
         error_msg = f"Research failed: {str(e)}"
+        logger.error(error_msg)
+        raise HTTPException(status_code=500, detail=error_msg)
+
+@app.get("/trace/{session_id}")
+async def get_execution_trace(
+    session_id: str,
+    workflow: ResearchAssistantWorkflow = Depends(get_workflow)
+):
+    """Get execution trace for debugging"""
+    try:
+        trace_data = workflow.get_execution_trace()
+        return {
+            "session_id": session_id,
+            "execution_trace": trace_data,
+            "timestamp": datetime.now().isoformat()
+        }
+    except Exception as e:
+        error_msg = f"Failed to get trace: {str(e)}"
+        logger.error(error_msg)
+        raise HTTPException(status_code=500, detail=error_msg)
+
+@app.post("/trace/clear")
+async def clear_execution_trace(workflow: ResearchAssistantWorkflow = Depends(get_workflow)):
+    """Clear execution trace"""
+    try:
+        workflow.clear_execution_trace()
+        return {
+            "message": "Execution trace cleared",
+            "timestamp": datetime.now().isoformat()
+        }
+    except Exception as e:
+        error_msg = f"Failed to clear trace: {str(e)}"
+        logger.error(error_msg)
+        raise HTTPException(status_code=500, detail=error_msg)
+
+@app.get("/graph/structure")
+async def get_graph_structure(workflow: ResearchAssistantWorkflow = Depends(get_workflow)):
+    """Get the workflow graph structure"""
+    try:
+        structure = workflow.get_graph_structure()
+        return {
+            "graph_structure": structure,
+            "timestamp": datetime.now().isoformat()
+        }
+    except Exception as e:
+        error_msg = f"Failed to get graph structure: {str(e)}"
+        logger.error(error_msg)
+        raise HTTPException(status_code=500, detail=error_msg)
+
+@app.get("/graph/visualize")
+async def visualize_graph(workflow: ResearchAssistantWorkflow = Depends(get_workflow)):
+    """Generate graph visualization"""
+    try:
+        output_path = workflow.visualize_graph()
+        if output_path:
+            return {
+                "message": "Graph visualization generated",
+                "path": output_path,
+                "timestamp": datetime.now().isoformat()
+            }
+        else:
+            raise HTTPException(status_code=500, detail="Failed to generate visualization")
+    except Exception as e:
+        error_msg = f"Visualization failed: {str(e)}"
         logger.error(error_msg)
         raise HTTPException(status_code=500, detail=error_msg)
 
@@ -291,16 +395,26 @@ async def get_stats(workflow: ResearchAssistantWorkflow = Depends(get_workflow))
             except Exception as e:
                 logger.warning(f"Could not get memory stats: {e}")
         
-        # Get workflow info
+        # Get enhanced workflow info
         workflow_info = {
             "total_tools": len(workflow.tools),
             "model_provider": workflow.model_loader.model_provider,
-            "model_info": workflow.model_loader.get_model_info()
+            "model_info": workflow.model_loader.get_model_info(),
+            "orchestrator_type": "enhanced_dynamic",
+            "max_tool_iterations": workflow.max_tool_iterations,
+            "execution_trace_enabled": True
         }
+        
+        # Get current execution trace stats
+        trace_data = workflow.get_execution_trace()
         
         return {
             "system_stats": system_stats,
             "workflow_info": workflow_info,
+            "current_trace_stats": {
+                "total_steps": trace_data.get("total_steps", 0),
+                "tool_usage_stats": trace_data.get("tool_usage_stats", {})
+            },
             "timestamp": datetime.now().isoformat()
         }
         
@@ -314,7 +428,7 @@ async def get_stats(workflow: ResearchAssistantWorkflow = Depends(get_workflow))
 
 @app.get("/tools")
 async def get_available_tools(workflow: ResearchAssistantWorkflow = Depends(get_workflow)):
-    """Get list of available tools"""
+    """Get list of available tools with enhanced information"""
     try:
         tools_info = []
         for tool in workflow.tools:
@@ -322,7 +436,8 @@ async def get_available_tools(workflow: ResearchAssistantWorkflow = Depends(get_
                 tool_info = {
                     "name": getattr(tool, 'name', 'unknown'),
                     "description": getattr(tool, 'description', 'No description available'),
-                    "type": type(tool).__name__
+                    "type": type(tool).__name__,
+                    "usage_count": workflow.tool_usage_stats.get(getattr(tool, 'name', 'unknown'), 0)
                 }
                 tools_info.append(tool_info)
             except Exception as e:
@@ -331,6 +446,12 @@ async def get_available_tools(workflow: ResearchAssistantWorkflow = Depends(get_
         return {
             "tools": tools_info,
             "total_tools": len(tools_info),
+            "orchestrator_features": [
+                "Dynamic tool selection",
+                "Conditional routing",
+                "Tool usage tracking",
+                "Execution tracing"
+            ],
             "timestamp": datetime.now().isoformat()
         }
         
@@ -346,13 +467,14 @@ if __name__ == "__main__":
         port = config.get("api.port", 8000)
         debug = config.get("api.debug", True)
         
-        logger.info(f"Starting server on {host}:{port}")
+        logger.info(f"Starting enhanced server on {host}:{port}")
         
         uvicorn.run(
             "main:app",
             host=host,
             port=port,
             reload=debug,
+            reload_excludes=["logs/*", "*.log"],
             log_level="info"
         )
         
