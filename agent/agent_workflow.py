@@ -20,6 +20,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class ResearchAssistantWorkflow:
     def __init__(self, model_provider="groq"):
         try:
@@ -62,22 +63,27 @@ class ResearchAssistantWorkflow:
             
             # Simple execution trace
             self.execution_trace = []
+
+            logger.info("Research Assistant __init__ completed.")
             
         except Exception as e:
             error_msg = f"Error in ResearchAssistantWorkflow.__init__: {str(e)}"
-            print(error_msg)
+            logger.error(error_msg)
             raise Exception(error_msg)
-    
+
+
     def _log_step(self, step_name, details=None):
         """Log execution steps for simple tracing."""
+        
         step_info = {
             "step": step_name,
             "timestamp": datetime.now().isoformat(),
             "details": details or {}
         }
         self.execution_trace.append(step_info)
-        print(f"[TRACE] {step_name}: {details or ''}")
-    
+        logger.info(f"[TRACE] {step_name}: {details or ''}")
+
+
     def agent_node(self, state):
         """Main agent node that decides which tools to use."""
         try:
@@ -103,9 +109,9 @@ class ResearchAssistantWorkflow:
         except Exception as e:
             error_msg = f"Error in agent_node: {str(e)}"
             self._log_step("agent_error", {"error": error_msg})
-            print(error_msg)
             raise Exception(error_msg)
     
+        
     def should_continue(self, state):
         """Determine if we should continue with tools or end."""
         try:
@@ -118,15 +124,14 @@ class ResearchAssistantWorkflow:
                 return "tools"
             else:
                 self._log_step("ending_workflow")
-                return "end"
+                return END  # Use END constant instead of "end"
                 
         except Exception as e:
             error_msg = f"Error in should_continue: {str(e)}"
             self._log_step("continue_error", {"error": error_msg})
-            print(error_msg)
-            return "end"
+            return END
     
-    def build_graph(self):
+    '''def build_graph(self):
         """Build the simplified research workflow graph."""
         try:
             graph_builder = StateGraph(MessagesState)
@@ -153,8 +158,36 @@ class ResearchAssistantWorkflow:
             
         except Exception as e:
             error_msg = f"Error in build_graph: {str(e)}"
-            print(error_msg)
+            logger.error(error_msg)
+            raise Exception(error_msg)'''
+    def build_graph(self):
+        """Build the simplified research workflow graph."""
+        try:
+            graph_builder = StateGraph(MessagesState)
+            
+            # Add nodes
+            graph_builder.add_node("agent", self.agent_node)
+            graph_builder.add_node("tools", ToolNode(self.tools))
+            
+            # Add edges
+            graph_builder.add_edge(START, "agent")
+            
+            # Use tools_condition for proper routing
+            graph_builder.add_conditional_edges(
+                "agent",
+                tools_condition,  # Use built-in tools_condition
+            )
+            
+            graph_builder.add_edge("tools", "agent")
+            
+            self.graph = graph_builder.compile()
+            return self.graph
+            
+        except Exception as e:
+            error_msg = f"Error in build_graph: {str(e)}"
+            logger.error(error_msg)
             raise Exception(error_msg)
+    
     
     def get_execution_trace(self):
         """Get the simple execution trace."""
@@ -164,7 +197,7 @@ class ResearchAssistantWorkflow:
         """Clear the execution trace."""
         self.execution_trace = []
     
-    def run_research(self, query, conversation_id=None):
+    def run_research(self, query, conversation_id=None, max_results=10):
         """Run a research query through the workflow."""
         try:
             if not self.graph:
@@ -193,7 +226,8 @@ class ResearchAssistantWorkflow:
             # Initialize state
             initial_state = {
                 "messages": [initial_message],
-                "conversation_id": conversation_id
+                "conversation_id": conversation_id,
+                "max_results": max_results
             }
             
             # Run the workflow
@@ -221,7 +255,6 @@ class ResearchAssistantWorkflow:
         except Exception as e:
             error_msg = f"Error in run_research: {str(e)}"
             self._log_step("workflow_error", {"error": error_msg})
-            print(error_msg)
             raise Exception(error_msg)
 
     
@@ -231,5 +264,5 @@ class ResearchAssistantWorkflow:
             return self.run_research(query, conversation_id)
         except Exception as e:
             error_msg = f"Error in __call__: {str(e)}"
-            print(error_msg)
+            logger.error(error_msg)
             raise Exception(error_msg)

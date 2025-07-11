@@ -1,11 +1,11 @@
 """Data extraction utility for the Dynamic Research Assistant."""
 
-import logging
 import re
 import json
 from utils.model_loader import ModelLoader
+from logger.logging import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 class DataExtractor:
     """Handles structured data extraction from unstructured text."""
@@ -14,13 +14,15 @@ class DataExtractor:
         try:
             self.model_loader = ModelLoader(model_provider)
             self.llm = self.model_loader.load_llm()
+            logger.info(f"DataExtractor Utility Class Initialized")
+
         except Exception as e:
-            error_msg = f"Error in DataExtractor.__init__: {str(e)}"
-            logger.error(error_msg)
+            error_msg = f"Error in DataExtractor Utility Class Initialization -> {str(e)}"
             raise Exception(error_msg)
     
     def extract_key_metrics(self, text):
         """Extract key metrics and statistics from text."""
+        
         try:
             prompt = f"""Extract key metrics, statistics, and quantitative data from the following text. Format as JSON:
 
@@ -45,12 +47,12 @@ class DataExtractor:
                 return {"raw_metrics": content}
                 
         except Exception as e:
-            error_msg = f"Error in extract_key_metrics: {str(e)}"
-            logger.error(error_msg)
+            error_msg = f"Error in extract_key_metrics utility function -> {str(e)}"
             raise Exception(error_msg)
     
     def extract_entities(self, text):
         """Extract named entities from text."""
+        
         try:
             prompt = f"""Extract named entities from the following text. Categorize them as:
                         - PERSON: People's names
@@ -76,12 +78,12 @@ class DataExtractor:
                 return self._parse_entities_fallback(content)
                 
         except Exception as e:
-            error_msg = f"Error in extract_entities: {str(e)}"
-            logger.error(error_msg)
+            error_msg = f"Error in extract_entities utility function -> {str(e)}"
             raise Exception(error_msg)
     
     def _parse_entities_fallback(self, content):
         """Fallback entity parsing when JSON parsing fails."""
+        
         try:
             entities = {
                 "PERSON": [],
@@ -109,12 +111,12 @@ class DataExtractor:
             return entities
             
         except Exception as e:
-            error_msg = f"Error in _parse_entities_fallback: {str(e)}"
-            logger.error(error_msg)
+            error_msg = f"Error in _parse_entities_fallback utility function -> {str(e)}"
             return {"error": error_msg}
     
     def extract_table_data(self, text):
         """Extract tabular data from text."""
+        
         try:
             prompt = f"""Extract any tabular data from the following text. Convert tables to structured format:
 
@@ -132,12 +134,12 @@ class DataExtractor:
                 return [{"raw_table_data": content}]
                 
         except Exception as e:
-            error_msg = f"Error in extract_table_data: {str(e)}"
-            logger.error(error_msg)
+            error_msg = f"Error in extract_table_data utility function -> {str(e)}"
             raise Exception(error_msg)
     
     def extract_contact_info(self, text):
         """Extract contact information from text."""
+        
         try:
             contact_info = {
                 "emails": [],
@@ -172,6 +174,5 @@ class DataExtractor:
             return contact_info
             
         except Exception as e:
-            error_msg = f"Error in extract_contact_info: {str(e)}"
-            logger.error(error_msg)
+            error_msg = f"Error in extract_contact_info utility function -> {str(e)}"
             raise Exception(error_msg)

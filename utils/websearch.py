@@ -1,16 +1,15 @@
 """Web search utility for the Dynamic Research Assistant."""
 
-import logging
 import requests
 import asyncio
-from typing import Dict, List, Optional, Any
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin, urlparse
-import time
+from urllib.parse import urlparse
 
 from utils.config_loader import ConfigLoader
+from logger.logging import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
+
 
 class WebSearch:
     """Handles web search operations using multiple search providers."""
@@ -19,19 +18,18 @@ class WebSearch:
         try:
             self.config = ConfigLoader()
             self.timeout = self.config.get("search.timeout", 30)
-            self.max_results = self.config.get("search.max_results", 10)
             self.user_agent = self.config.get("search.user_agent", "Research Assistant Bot 1.0")
             self.session = requests.Session()
             self.session.headers.update({'User-Agent': self.user_agent})
-            logger.info("WebSearch initialized successfully")
+            logger.info("WebSearch Utility Class Initialized")
+        
         except Exception as e:
-            error_msg = f"Error in WebSearch.__init__: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in WebSearch Utility Class Initialization -> {str(e)}"
             raise Exception(error_msg)
         
     def search(self, query, num_results=None):
         """Search the web for the given query."""
+        
         try:
             if not query or not query.strip():
                 return []
@@ -64,13 +62,12 @@ class WebSearch:
             return []
             
         except Exception as e:
-            error_msg = f"Error in search: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in search utility function -> {str(e)}"
             raise Exception(error_msg)
     
     def _search_tavily(self, query, num_results):
         """Search using Tavily API."""
+        
         try:
             api_key = self.config.get_api_key("tavily")
             if not api_key:
@@ -112,13 +109,12 @@ class WebSearch:
             return results
             
         except Exception as e:
-            error_msg = f"Error in _search_tavily: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in _search_tavily utility function -> {str(e)}"
             raise Exception(error_msg)
     
     def _search_duckduckgo(self, query, num_results):
         """Search using DuckDuckGo (basic implementation)."""
+        
         try:
             # This is a simplified implementation
             # In production, you might want to use a proper DuckDuckGo API or library
@@ -159,24 +155,23 @@ class WebSearch:
             return results
             
         except Exception as e:
-            error_msg = f"Error in _search_duckduckgo: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in _search_duckduckgo utility function -> {str(e)}"
             raise Exception(error_msg)
     
     async def async_search(self, query, num_results=None):
         """Asynchronous web search."""
+        
         try:
             loop = asyncio.get_event_loop()
             return await loop.run_in_executor(None, self.search, query, num_results)
+        
         except Exception as e:
-            error_msg = f"Error in async_search: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in async_search utility function -> {str(e)}"
             raise Exception(error_msg)
     
     def get_page_content(self, url):
         """Extract text content from a web page."""
+        
         try:
             if not url or not url.strip():
                 return ""
@@ -208,55 +203,9 @@ class WebSearch:
             return text
             
         except Exception as e:
-            error_msg = f"Error in get_page_content for {url}: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in get_page_content utility function for {url} -> {str(e)}"
             raise Exception(error_msg)
     
-    def search_and_extract(self, query, num_results=None, extract_content=True):
-        """Search and optionally extract full content from results."""
-        try:
-            results = self.search(query, num_results)
-            
-            if not extract_content:
-                return results
-            
-            # Extract full content for each result
-            enhanced_results = []
-            for result in results:
-                try:
-                    if result.get("url"):
-                        full_content = self.get_page_content(result["url"])
-                        result["full_content"] = full_content
-                    enhanced_results.append(result)
-                except Exception as e:
-                    logger.warning(f"Failed to extract content from {result.get('url', 'unknown')}: {e}")
-                    enhanced_results.append(result)
-            
-            return enhanced_results
-            
-        except Exception as e:
-            error_msg = f"Error in search_and_extract: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
-            raise Exception(error_msg)
-    
-    def validate_url(self, url):
-        """Validate if a URL is accessible."""
-        try:
-            if not url or not url.strip():
-                return False
-            
-            parsed_url = urlparse(url)
-            if not parsed_url.scheme or not parsed_url.netloc:
-                return False
-            
-            response = self.session.head(url, timeout=10)
-            return response.status_code == 200
-            
-        except Exception as e:
-            logger.warning(f"URL validation failed for {url}: {e}")
-            return False
     
     def __del__(self):
         """Cleanup when the object is destroyed."""

@@ -3,6 +3,9 @@
 from langchain.tools import tool
 from dotenv import load_dotenv
 from utils.websearch import WebSearch
+from logger.logging import get_logger
+
+logger = get_logger(__name__)
 
 class WebSearchTool:
     def __init__(self):
@@ -10,28 +13,32 @@ class WebSearchTool:
             load_dotenv()
             self.web_search = WebSearch()
             self.web_search_tool_list = self._setup_tools()
+            logger.info("WebSearchTool Class Initialized")
+        
         except Exception as e:
-            error_msg = f"Error in WebSearchTool.__init__: {str(e)}"
-            print(error_msg)
+            error_msg = f"Error in WebSearchTool Class Initialization -> {str(e)}"
+            logger.error(error_msg)
             raise Exception(error_msg)
 
     def _setup_tools(self):
         """Setup all tools for web search"""
         
         @tool
-        def search_web(query: str, num_results: int = 10):
+        def search_web(query: str, max_results: int = 10):
             """Search the web for information on a given query"""
+            
             try:
-                results = self.web_search.search(query, num_results)
+                results = self.web_search.search(query, max_results)
                 return {
                     "success": True,
                     "results": results,
                     "query": query,
                     "total_results": len(results)
                 }
+            
             except Exception as e:
-                error_msg = f"Error in search_web: {str(e)}"
-                print(error_msg)
+                error_msg = f"Error in search_web tool -> {str(e)}"
+                logger.error(error_msg)
                 return {
                     "success": False,
                     "error": error_msg,
@@ -41,6 +48,7 @@ class WebSearchTool:
         @tool
         def get_page_content(url: str):
             """Extract full content from a specific web page"""
+            
             try:
                 content = self.web_search.get_page_content(url)
                 return {
@@ -48,9 +56,10 @@ class WebSearchTool:
                     "content": content,
                     "url": url
                 }
+            
             except Exception as e:
-                error_msg = f"Error in get_page_content: {str(e)}"
-                print(error_msg)
+                error_msg = f"Error in get_page_content tool -> {str(e)}"
+                logger.error(error_msg)
                 return {
                     "success": False,
                     "error": error_msg,

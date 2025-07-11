@@ -13,7 +13,11 @@ from utils.config_loader import ConfigLoader
 from logger.logging import setup_logging, get_logger
 
 # Initialize logging
-setup_logging()
+config = ConfigLoader()
+log_level = config.get("logging.level", "INFO")
+log_file = config.get("logging.file", None)
+format = config.get("logging.format", "%(asctime)s - %(levelname)s - %(message)s")
+setup_logging(log_level=log_level, log_file=log_file, format=format)
 logger = get_logger(__name__)
 
 # Global workflow instance
@@ -22,16 +26,18 @@ workflow_instance = None
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan management"""
+    
     global workflow_instance
     
     # Startup
     try:
         logger.info("Starting Dynamic Research Assistant API")
         config = ConfigLoader()
-        model_provider = config.get_env("DEFAULT_MODEL_PROVIDER", "groq")
+        model_provider = config.get_env("MODEL_PROVIDER", "groq")
         workflow_instance = ResearchAssistantWorkflow(model_provider=model_provider)
         workflow_instance.build_graph()
         logger.info("Research workflow initialized successfully")
+    
     except Exception as e:
         error_msg = f"Failed to initialize workflow: {str(e)}"
         logger.error(error_msg)
@@ -42,6 +48,7 @@ async def lifespan(app: FastAPI):
     # Shutdown
     try:
         logger.info("Shutting down Dynamic Research Assistant API")
+    
     except Exception as e:
         logger.error(f"Error during shutdown: {e}")
 
@@ -99,16 +106,15 @@ async def research_endpoint(
     try:
         # Extract query data
         query = request_data.get("query", "").strip()
-        if not query:
-            raise HTTPException(status_code=400, detail="Query is required")
-        
         conversation_id = request_data.get("conversation_id") or str(uuid.uuid4())
         max_results = request_data.get("max_results", 10)
+        if not query or not conversation_id or not max_results:
+            raise HTTPException(status_code=400, detail="Missing required parameters")
         
-        logger.info(f"Processing research query: {query[:100]}...")
         
         # Run research through the workflow
-        result = workflow.run_research(query, conversation_id)
+        logger.info(f"Processing research query: {query[:100]}...")
+        result = workflow.run_research(query, conversation_id, max_results)
         
         # Get execution trace
         execution_trace = workflow.get_execution_trace()
@@ -135,9 +141,10 @@ async def research_endpoint(
         return research_result
         
     except HTTPException:
+        logger.error("HTTPException raised in research endpoint")
         raise
     except Exception as e:
-        error_msg = f"Research failed: {str(e)}"
+        error_msg = f"Research failed -> {str(e)}"
         logger.error(error_msg)
         raise HTTPException(status_code=500, detail=error_msg)
 
@@ -145,8 +152,8 @@ async def research_endpoint(
 if __name__ == "__main__":
     try:
         config = ConfigLoader()
-        host = config.get("api.host", "0.0.0.0")
-        port = config.get("api.port", 8000)
+        host = config.get_env("API_HOST", "0.0.0.0")
+        port = config.get_env("API_PORT", 8000)
         
         logger.info(f"Starting server on {host}:{port}")
         

@@ -1,11 +1,10 @@
 """Summarization utility for the Dynamic Research Assistant."""
 
-import logging
-from typing import List, Dict, Any
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from utils.model_loader import ModelLoader
+from logger.logging import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 class Summarizer:
     """Handles text summarization tasks."""
@@ -19,15 +18,16 @@ class Summarizer:
                 chunk_overlap=200,
                 length_function=len
             )
-            logger.info(f"Summarizer initialized with {model_provider} provider")
+            logger.info(f"Summarizer Utility Class Initialized")
+
         except Exception as e:
-            error_msg = f"Error in Summarizer.__init__: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in Summarizer Utility Class Initialization -> {str(e)}"
             raise Exception(error_msg)
     
+
     def summarize_text(self, text, max_length=500):
         """Summarize a single text."""
+        
         try:
             if not text or not text.strip():
                 return "No text provided for summarization"
@@ -37,9 +37,9 @@ class Summarizer:
             
             prompt = f"""Please provide a concise summary of the following text in approximately {max_length} words:
 
-Text: {text}
+                        Text: {text}
 
-Summary:"""
+                        Summary:"""
             
             response = self.llm.invoke(prompt)
             summary = response.content.strip()
@@ -51,13 +51,13 @@ Summary:"""
             return summary
             
         except Exception as e:
-            error_msg = f"Error in summarize_text: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in summarize_text utility function -> {str(e)}"
             raise Exception(error_msg)
+    
     
     def create_executive_summary(self, documents, topic):
         """Create an executive summary from multiple documents."""
+        
         try:
             if not documents:
                 return "No documents provided for executive summary"
@@ -86,9 +86,9 @@ Summary:"""
             
             prompt = f"""Based on the following research summaries about "{topic}", create a comprehensive executive summary that synthesizes the key findings, insights, and conclusions:
 
-{combined_text}
+                            {combined_text}
 
-Executive Summary:"""
+                            Executive Summary:"""
             
             response = self.llm.invoke(prompt)
             executive_summary = response.content.strip()
@@ -96,26 +96,42 @@ Executive Summary:"""
             if not executive_summary:
                 return "Unable to generate executive summary"
             
-            logger.info(f"Executive summary created for topic: {topic}")
             return executive_summary
             
         except Exception as e:
-            error_msg = f"Error in create_executive_summary: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in create_executive_summary utility function -> {str(e)}"
             raise Exception(error_msg)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     def extract_key_points(self, text, num_points=5):
         """Extract key points from text."""
+        
         try:
             if not text or not text.strip():
                 return []
             
             prompt = f"""Extract the {num_points} most important key points from the following text. Format as a numbered list:
 
-Text: {text}
+                        Text: {text}
 
-Key Points:"""
+                        Key Points:"""
             
             response = self.llm.invoke(prompt)
             content = response.content.strip()
@@ -136,70 +152,8 @@ Key Points:"""
                         key_points.append(clean_line)
             
             result = key_points[:num_points]
-            logger.info(f"Extracted {len(result)} key points from text")
             return result
             
         except Exception as e:
-            error_msg = f"Error in extract_key_points: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in extract_key_points utility function -> {str(e)}"
             raise Exception(error_msg)
-    
-    def summarize_multiple_texts(self, texts, max_length=500):
-        """Summarize multiple texts into a single summary."""
-        try:
-            if not texts:
-                return "No texts provided for summarization"
-            
-            # Combine all texts
-            combined_text = "\n\n".join([str(text) for text in texts if text])
-            
-            if not combined_text:
-                return "No valid text content found"
-            
-            return self.summarize_text(combined_text, max_length)
-            
-        except Exception as e:
-            error_msg = f"Error in summarize_multiple_texts: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
-            raise Exception(error_msg)
-    
-    def get_text_statistics(self, text):
-        """Get basic statistics about the text."""
-        try:
-            if not text:
-                return {
-                    "character_count": 0,
-                    "word_count": 0,
-                    "sentence_count": 0,
-                    "paragraph_count": 0
-                }
-            
-            # Basic statistics
-            char_count = len(text)
-            word_count = len(text.split())
-            sentence_count = len([s for s in text.split('.') if s.strip()])
-            paragraph_count = len([p for p in text.split('\n\n') if p.strip()])
-            
-            stats = {
-                "character_count": char_count,
-                "word_count": word_count,
-                "sentence_count": sentence_count,
-                "paragraph_count": paragraph_count
-            }
-            
-            logger.info(f"Text statistics calculated: {stats}")
-            return stats
-            
-        except Exception as e:
-            error_msg = f"Error in get_text_statistics: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
-            return {
-                "character_count": 0,
-                "word_count": 0,
-                "sentence_count": 0,
-                "paragraph_count": 0,
-                "error": error_msg
-            }

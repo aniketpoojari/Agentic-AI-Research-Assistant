@@ -1,14 +1,12 @@
 """Model loader for different LLM providers."""
 
-import logging
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 from langchain_groq import ChatGroq
-# from langchain_openai import ChatOpenAI
-# from langchain_anthropic import ChatAnthropic
 
 from utils.config_loader import ConfigLoader
+from logger.logging import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 class ModelLoader:
     """Loads and configures language models from different providers."""
@@ -18,11 +16,10 @@ class ModelLoader:
             self.config = ConfigLoader()
             self.model_provider = model_provider.lower()
             self.llm = None
-            logger.info(f"ModelLoader initialized with provider: {self.model_provider}")
+            logger.info(f"ModelLoader Utility Class Initialized")
+        
         except Exception as e:
-            error_msg = f"Error in ModelLoader.__init__: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in ModelLoader Utility Class Initialization -> {str(e)}"
             raise Exception(error_msg)
         
     def load_llm(self) -> Any:
@@ -40,20 +37,20 @@ class ModelLoader:
                 # self.llm = self._load_anthropic_model()
             else:
                 error_msg = f"Unsupported model provider: {self.model_provider}"
-                logger.error(error_msg)
                 raise Exception(error_msg)
             
+            self.validate_model()
+                        
             logger.info(f"Successfully loaded {self.model_provider} model")
             return self.llm
             
         except Exception as e:
-            error_msg = f"Error in load_llm: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in load_llm utility function -> {str(e)}"
             raise Exception(error_msg)
     
     def _load_groq_model(self) -> ChatGroq:
         """Load Groq model."""
+        
         try:
             api_key = self.config.get_api_key("groq")
             if not api_key:
@@ -61,35 +58,21 @@ class ModelLoader:
                 logger.error(error_msg)
                 raise Exception(error_msg)
                 
-            model_name = self.config.get("models.groq.model_name", "llama3-8b-8192")
-            temperature = self.config.get("models.groq.temperature", 0.1)
-            max_tokens = self.config.get("models.groq.max_tokens", 4096)
+            model_name = self.config.get_env("MODEL_NAME", "llama3-8b-8192")
+            temperature = self.config.get_env("MODEL_TEMPERATURE", 0.1)
+            max_tokens = self.config.get("MODEL_MAX_TOKENS", 4096)
             
             logger.info(f"Loading Groq model: {model_name}")
             
-            llm = ChatGroq(
+            return ChatGroq(
                 groq_api_key=api_key,
                 model_name=model_name,
                 temperature=temperature,
                 max_tokens=max_tokens
             )
-
-            # test the llm
-            test_prompt = "Hello, please respond with 'OK' if you can understand this message."
-            response = llm.invoke(test_prompt)
-            if hasattr(response, 'content') and response.content:
-                logger.info("Model validation successful")
-            else:
-                error_msg = "Model validation failed - no response content"
-                logger.error(error_msg)
-                raise Exception(error_msg)
-            
-            return llm
             
         except Exception as e:
-            error_msg = f"Error in _load_groq_model: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
+            error_msg = f"Error in _load_groq_model utility function -> {str(e)}"
             raise Exception(error_msg)
     
     '''def _load_openai_model(self) -> ChatOpenAI:
@@ -198,8 +181,8 @@ class ModelLoader:
         """Validate that the model is working correctly."""
         try:
             if self.llm is None:
-                logger.warning("Model not loaded, cannot validate")
-                return False
+                error_msg = "Model not loaded, cannot validate"
+                raise Exception(error_msg)
             
             # Simple test prompt
             test_prompt = "Hello, please respond with 'OK' if you can understand this message."
@@ -209,15 +192,15 @@ class ModelLoader:
                 logger.info("Model validation successful")
                 return True
             else:
-                logger.warning("Model validation failed - no response content")
-                return False
+                error_msg = "Model validation failed - no response content"
+                raise Exception(error_msg)
+                
                 
         except Exception as e:
-            error_msg = f"Error in validate_model: {str(e)}"
-            logger.error(error_msg)
-            print(error_msg)
-            return False
+            error_msg = f"Error in validate_model utility function -> {str(e)}"
+            raise Exception(error_msg)
     
+
     def reload_model(self) -> Any:
         """Reload the model (useful for configuration changes)."""
         try:

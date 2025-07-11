@@ -1,10 +1,10 @@
 """Fact-checking utility for the Dynamic Research Assistant."""
 
-import logging
 from utils.websearch import WebSearch
 from utils.model_loader import ModelLoader
+from logger.logging import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 class FactChecker:
     """Handles fact-checking operations."""
@@ -14,13 +14,15 @@ class FactChecker:
             self.model_loader = ModelLoader(model_provider)
             self.llm = self.model_loader.load_llm()
             self.web_search = WebSearch()
+            logger.info(f"FactChecker Utility Class Initialized")
+
         except Exception as e:
-            error_msg = f"Error in FactChecker.__init__: {str(e)}"
-            logger.error(error_msg)
+            error_msg = f"Error in FactChecker Utility Class Initialization -> {str(e)}"
             raise Exception(error_msg)
 
     def extract_and_verify_claims(self, text):
         """Extract claims from text and verify them."""
+        
         try:
             # Extract claims
             claims = self.extract_claims(text)
@@ -34,12 +36,12 @@ class FactChecker:
             return verification_results
             
         except Exception as e:
-            error_msg = f"Error in extract_and_verify_claims: {str(e)}"
-            logger.error(error_msg)
+            error_msg = f"Error in extract_and_verify_claims utility function -> {str(e)}"
             raise Exception(error_msg)
     
     def extract_claims(self, text):
         """Extract factual claims from text."""
+        
         try:
             prompt = f"""Extract the main factual claims from the following text. List only specific, verifiable statements:
 
@@ -64,12 +66,12 @@ class FactChecker:
             return claims
             
         except Exception as e:
-            error_msg = f"Error in extract_claims: {str(e)}"
-            logger.error(error_msg)
+            error_msg = f"Error in extract_claims utility function -> {str(e)}"
             raise Exception(error_msg)
     
     def verify_claim(self, claim):
         """Verify a specific claim using web search."""
+        
         try:
             # Search for evidence
             search_results = self.web_search.search(f"fact check {claim}", 5)
@@ -136,6 +138,5 @@ class FactChecker:
             return verification_result
             
         except Exception as e:
-            error_msg = f"Error in verify_claim: {str(e)}"
-            logger.error(error_msg)
+            error_msg = f"Error in verify_claim utility function -> {str(e)}"
             raise Exception(error_msg)

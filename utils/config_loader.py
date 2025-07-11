@@ -5,6 +5,9 @@ import yaml
 from pathlib import Path
 from typing import Any, Optional
 from dotenv import dotenv_values
+from logger.logging import get_logger
+
+logger = get_logger(__name__)
 
 class ConfigLoader:
     """Loads configuration from YAML files and environment variables."""
@@ -17,30 +20,31 @@ class ConfigLoader:
             self.config_file = config_file
             self.config_data = {}
             self.load_config()
+            logger.info("ConfigLoader initialized successfully")
             
         except Exception as e:
-            error_msg = f"Error in ConfigLoader.__init__: {str(e)}"
-            print(error_msg)
+            error_msg = f"Error in ConfigLoader Class Initialization -> {str(e)}"
             raise Exception(error_msg)
     
     def load_config(self):
         """Load configuration from YAML file."""
+        
         try:
             config_path = Path(self.config_file)
             if config_path.exists():
                 with open(config_path, 'r') as file:
                     self.config_data = yaml.safe_load(file) or {}
             else:
-                print(f"Warning: Config file {self.config_file} not found. Using defaults.")
+                logger.warning(f"Config file {self.config_file} not found.")
                 self.config_data = {}
                 
         except Exception as e:
-            error_msg = f"Error loading config: {str(e)}"
-            print(error_msg)
-            self.config_data = {}
+            error_msg = f"Error loading configuration -> {str(e)}"
+            raise Exception(error_msg)
     
     def get(self, key: str, default: Any = None) -> Any:
         """Get configuration value using dot notation."""
+        
         try:
             keys = key.split('.')
             value = self.config_data
@@ -54,20 +58,23 @@ class ConfigLoader:
             return value
             
         except Exception as e:
-            print(f"Error getting config key {key}: {e}")
-            return default
+            error_msg = f"Error getting config key {key} -> {str(e)}"
+            raise Exception(error_msg)
     
     def get_env(self, key: str, default: Optional[str] = None) -> Optional[str]:
         """Get environment variable from .env file directly."""
+        
         try:
             # First check .env file, then fall back to system env
             return self.env_vars.get(key, os.getenv(key, default))
+        
         except Exception as e:
-            print(f"Error getting environment variable {key}: {e}")
-            return default
+            error_msg = f"Error getting environment variable {key} -> {str(e)}"
+            raise Exception(error_msg)
     
     def get_api_key(self, provider: str) -> Optional[str]:
         """Get API key for a specific provider."""
+        
         try:
             key_mapping = {
                 "groq": "GROQ_API_KEY",
@@ -83,15 +90,18 @@ class ConfigLoader:
                 return None
                 
         except Exception as e:
-            print(f"Error getting API key for {provider}: {e}")
-            return None
+            error_msg = f"Error getting API key for {provider} -> {str(e)}"
+            raise Exception(error_msg)
     
     def reload(self):
         """Reload configuration and .env file."""
+        
         try:
             # Reload .env file
             self.env_vars = dotenv_values(".env")
             # Reload config file
             self.load_config()
+        
         except Exception as e:
-            print(f"Error reloading config: {e}")
+            error_msg = f"Error reloading config -> {str(e)}"
+            raise Exception(error_msg)
