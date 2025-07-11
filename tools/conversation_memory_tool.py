@@ -76,4 +76,4 @@ class ConversationMemoryTool:
                     "error": error_msg
                 }
 
-        return [store_conversation, get_conversation_history, get_memory_stats]
+        return [store_conversation, get_conversation_history]

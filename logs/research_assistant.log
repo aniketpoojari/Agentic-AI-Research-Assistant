@@ -1,0 +1,664 @@
+2025-07-10 18:56:57,812 - main - INFO - Starting Dynamic Research Assistant API with Enhanced Orchestrator
+2025-07-10 18:56:57,819 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 18:56:57,819 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 18:56:58,602 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 18:56:58,610 - utils.model_loader - INFO - Model validation successful
+2025-07-10 18:56:58,610 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 18:56:58,615 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 18:56:58,625 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 18:56:58,625 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 18:56:58,951 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 18:56:58,952 - utils.model_loader - INFO - Model validation successful
+2025-07-10 18:56:58,952 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 18:56:58,952 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 18:56:58,967 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 18:56:58,968 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 18:56:59,304 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 18:56:59,305 - utils.model_loader - INFO - Model validation successful
+2025-07-10 18:56:59,306 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 18:56:59,310 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 18:56:59,321 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 18:56:59,322 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 18:56:59,653 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 18:56:59,655 - utils.model_loader - INFO - Model validation successful
+2025-07-10 18:56:59,655 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 18:56:59,668 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 18:56:59,668 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 18:57:00,040 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 18:57:00,041 - utils.model_loader - INFO - Model validation successful
+2025-07-10 18:57:00,042 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 18:57:00,295 - main - INFO - Enhanced research workflow initialized successfully
+2025-07-10 19:21:21,106 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 19:24:32,271 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 19:24:32,278 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:24:32,278 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:24:33,068 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:24:33,075 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:24:33,076 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:24:33,082 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:24:33,091 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:24:33,091 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:24:33,773 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:24:33,775 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:24:33,775 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:24:33,775 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 19:24:33,788 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:24:33,788 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:24:34,126 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:24:34,128 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:24:34,128 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:24:34,133 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:24:34,144 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:24:34,145 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:24:34,479 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:24:34,480 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:24:34,480 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:24:34,493 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:24:34,494 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:24:34,811 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:24:34,812 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:24:34,812 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:24:34,878 - main - INFO - Research workflow initialized successfully
+2025-07-10 19:24:38,914 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 19:24:56,316 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 19:24:56,324 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:24:56,324 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:24:56,990 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:24:56,996 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:24:56,996 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:24:57,002 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:24:57,012 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:24:57,013 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:24:57,348 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:24:57,348 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:24:57,348 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:24:57,349 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 19:24:57,362 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:24:57,362 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:24:57,757 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:24:57,758 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:24:57,758 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:24:57,762 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:24:57,773 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:24:57,773 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:24:58,365 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:24:58,367 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:24:58,367 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:24:58,379 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:24:58,379 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:24:59,578 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:24:59,579 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:24:59,579 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:24:59,633 - main - INFO - Research workflow initialized successfully
+2025-07-10 19:25:34,076 - main - INFO - Processing research query: Hello...
+2025-07-10 19:25:35,204 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:25:36,321 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:25:36,375 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 19:25:36,376 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2025-07-10 19:25:40,040 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:25:40,189 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 19:25:40,190 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 29.000000 seconds
+2025-07-10 19:26:09,569 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:26:09,685 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 19:26:09,686 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2025-07-10 19:26:13,341 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:26:13,344 - langgraph - WARNING - Task agent with path ('__pregel_pull', 'agent') wrote to unknown channel branch:to:end, ignoring it.
+2025-07-10 19:26:13,345 - main - INFO - Research completed for query: Hello...
+2025-07-10 19:27:28,273 - main - INFO - Processing research query: Tell me about the transformer architechture...
+2025-07-10 19:27:29,530 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:27:29,533 - utils.websearch - INFO - Starting web search for query: Transformer architecture...
+2025-07-10 19:27:30,452 - utils.websearch - INFO - DuckDuckGo search returned 10 results
+2025-07-10 19:27:31,971 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:27:31,972 - langgraph - WARNING - Task agent with path ('__pregel_pull', 'agent') wrote to unknown channel branch:to:end, ignoring it.
+2025-07-10 19:27:31,974 - main - INFO - Research completed for query: Tell me about the transformer architechture...
+2025-07-10 19:28:16,881 - main - INFO - Processing research query: Give me a summary on the above information...
+2025-07-10 19:28:17,694 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:28:17,697 - langgraph - WARNING - Task agent with path ('__pregel_pull', 'agent') wrote to unknown channel branch:to:end, ignoring it.
+2025-07-10 19:28:17,697 - main - INFO - Research completed for query: Give me a summary on the above information...
+2025-07-10 19:31:26,865 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 19:31:28,556 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 19:31:28,563 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:31:28,564 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:31:29,331 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:31:29,338 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:31:29,338 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:31:29,343 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:31:29,353 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:31:29,353 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:31:30,397 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:31:30,397 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:31:30,398 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:31:30,398 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 19:31:30,411 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:31:30,412 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:31:30,752 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:31:30,754 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:31:30,754 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:31:30,758 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:31:30,769 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:31:30,770 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:31:31,126 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:31:31,127 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:31:31,128 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:31:31,142 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:31:31,143 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:31:31,629 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:31:31,630 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:31:31,630 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:31:31,694 - main - ERROR - Failed to initialize workflow: Error in build_graph: 'CompiledStateGraph' object has no attribute 'save_image'
+2025-07-10 19:32:03,139 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 19:32:03,147 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:32:03,147 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:32:03,621 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:32:03,628 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:32:03,629 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:32:03,634 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:32:03,644 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:32:03,644 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:32:03,976 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:32:03,977 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:32:03,978 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:32:03,978 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 19:32:03,990 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:32:03,991 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:32:04,324 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:32:04,325 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:32:04,325 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:32:04,329 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:32:04,342 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:32:04,342 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:32:04,673 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:32:04,674 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:32:04,674 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:32:04,689 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:32:04,689 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:32:05,018 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:32:05,020 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:32:05,020 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:32:05,074 - main - INFO - Research workflow initialized successfully
+2025-07-10 19:33:12,150 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 19:33:13,940 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 19:33:13,947 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:33:13,947 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:33:14,514 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:33:14,523 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:33:14,523 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:33:14,528 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:33:14,538 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:33:14,538 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:33:14,860 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:33:14,861 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:33:14,861 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:33:14,862 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 19:33:14,875 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:33:14,875 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:33:15,205 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:33:15,207 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:33:15,207 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:33:15,211 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:33:15,224 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:33:15,224 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:33:15,537 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:33:15,538 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:33:15,538 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:33:15,552 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:33:15,552 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:33:15,875 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:33:15,877 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:33:15,877 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:33:16,411 - main - INFO - Research workflow initialized successfully
+2025-07-10 19:34:06,381 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 19:34:11,968 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 19:34:11,976 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:34:11,976 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:34:12,452 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:34:12,460 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:34:12,461 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:34:12,465 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:34:12,475 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:34:12,475 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:34:12,809 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:34:12,810 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:34:12,810 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:34:12,810 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 19:34:12,824 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:34:12,824 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:34:13,160 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:34:13,161 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:34:13,162 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:34:13,165 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 19:34:13,179 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:34:13,179 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:34:13,505 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:34:13,506 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:34:13,507 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:34:13,520 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 19:34:13,521 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 19:34:13,878 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 19:34:13,879 - utils.model_loader - INFO - Model validation successful
+2025-07-10 19:34:13,879 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 19:34:14,043 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:09:30,066 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 20:09:31,889 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:09:31,897 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:09:31,897 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:09:32,618 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:09:32,632 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:09:32,632 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:09:32,638 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:09:32,649 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:09:32,650 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:09:33,072 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:09:33,073 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:09:33,073 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:09:33,073 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:09:33,088 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:09:33,088 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:09:33,533 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:09:33,535 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:09:33,535 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:09:33,539 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:09:33,551 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:09:33,552 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:09:34,244 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:09:34,245 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:09:34,246 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:09:34,261 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:09:34,262 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:09:34,613 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:09:34,614 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:09:34,614 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:09:34,786 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:09:36,527 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:09:36,535 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:09:36,536 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:09:37,021 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:09:37,028 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:09:37,028 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:09:37,033 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:09:37,044 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:09:37,044 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:09:37,379 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:09:37,380 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:09:37,381 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:09:37,381 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:09:37,394 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:09:37,394 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:09:37,721 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:09:37,722 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:09:37,722 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:09:37,727 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:09:37,739 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:09:37,739 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:09:38,065 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:09:38,067 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:09:38,067 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:09:38,080 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:09:38,081 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:09:38,406 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:09:38,408 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:09:38,408 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:09:38,540 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:10:44,853 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 20:10:46,771 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:10:46,778 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:46,778 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:10:47,433 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:10:47,442 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:10:47,443 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:10:47,449 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:10:47,460 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:47,460 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:10:47,792 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:10:47,794 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:10:47,794 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:10:47,794 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:10:47,807 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:47,807 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:10:48,186 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:10:48,187 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:10:48,187 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:10:48,192 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:10:48,205 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:48,205 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:10:48,528 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:10:48,529 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:10:48,529 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:10:48,542 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:48,542 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:10:48,909 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:10:48,910 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:10:48,910 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:10:49,081 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:10:50,803 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:10:50,810 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:50,810 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:10:51,296 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:10:51,302 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:10:51,303 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:10:51,308 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:10:51,318 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:51,319 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:10:51,776 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:10:51,778 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:10:51,778 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:10:51,779 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:10:51,792 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:51,792 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:10:52,137 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:10:52,138 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:10:52,138 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:10:52,143 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:10:52,156 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:52,156 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:10:52,525 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:10:52,526 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:10:52,526 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:10:52,541 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:52,541 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:10:52,963 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:10:52,964 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:10:52,964 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:10:53,112 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:10:59,267 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:10:59,275 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:59,276 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:10:59,757 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:10:59,764 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:10:59,764 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:10:59,770 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:10:59,779 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:10:59,779 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:11:00,141 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:11:00,142 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:11:00,142 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:11:00,142 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:11:00,154 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:11:00,154 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:11:00,502 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:11:00,503 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:11:00,504 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:11:00,508 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:11:00,519 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:11:00,519 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:11:01,013 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:11:01,014 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:11:01,014 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:11:01,029 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:11:01,029 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:11:01,381 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:11:01,383 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:11:01,383 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:11:01,538 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:11:34,774 - main - INFO - Processing research query: Tell me about the transformer architecture...
+2025-07-10 20:11:35,937 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:11:35,941 - utils.websearch - INFO - Starting web search for query: Transformer architecture...
+2025-07-10 20:11:36,497 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:11:36,499 - utils.summarizer - INFO - Text summarized successfully: 1137 -> 1210 characters
+2025-07-10 20:11:36,939 - utils.websearch - INFO - DuckDuckGo search returned 10 results
+2025-07-10 20:11:36,993 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 20:11:36,995 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 6.000000 seconds
+2025-07-10 20:11:44,450 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:11:44,451 - langgraph - WARNING - Task agent with path ('__pregel_pull', 'agent') wrote to unknown channel branch:to:end, ignoring it.
+2025-07-10 20:11:44,452 - main - INFO - Research completed for query: Tell me about the transformer architecture...
+2025-07-10 20:16:58,860 - main - INFO - Processing research query: summarize the above...
+2025-07-10 20:16:59,728 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:16:59,730 - langgraph - WARNING - Task agent with path ('__pregel_pull', 'agent') wrote to unknown channel branch:to:end, ignoring it.
+2025-07-10 20:16:59,742 - main - INFO - Research completed for query: summarize the above...
+2025-07-10 20:17:54,934 - main - INFO - Processing research query: Tell me about the transformer architecture...
+2025-07-10 20:17:56,240 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:17:56,242 - utils.websearch - INFO - Starting web search for query: Transformer architecture...
+2025-07-10 20:17:56,770 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:17:56,772 - utils.summarizer - INFO - Text summarized successfully: 741 -> 996 characters
+2025-07-10 20:17:57,185 - utils.websearch - INFO - DuckDuckGo search returned 10 results
+2025-07-10 20:17:57,240 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 20:17:57,240 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 6.000000 seconds
+2025-07-10 20:18:04,869 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:18:04,964 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 20:18:04,965 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 33.000000 seconds
+2025-07-10 20:18:39,006 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:18:39,007 - utils.summarizer - INFO - Text summarized successfully: 741 -> 1049 characters
+2025-07-10 20:18:39,111 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 20:18:39,112 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 30.000000 seconds
+2025-07-10 20:19:10,577 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:19:10,580 - langgraph - WARNING - Task agent with path ('__pregel_pull', 'agent') wrote to unknown channel branch:to:end, ignoring it.
+2025-07-10 20:19:10,581 - main - INFO - Research completed for query: Tell me about the transformer architecture...
+2025-07-10 20:19:11,561 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 20:19:36,345 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:19:36,352 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:19:36,353 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:19:36,825 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:19:36,833 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:19:36,833 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:19:36,839 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:19:36,849 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:19:36,849 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:19:37,180 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:19:37,181 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:19:37,181 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:19:37,181 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:19:37,195 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:19:37,195 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:19:37,848 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:19:37,849 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:19:37,850 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:19:37,853 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:19:37,865 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:19:37,865 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:19:38,195 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:19:38,196 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:19:38,196 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:19:38,210 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:19:38,211 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:19:38,536 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:19:38,537 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:19:38,538 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:19:38,799 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:19:57,657 - main - INFO - Processing research query: transformers architechture...
+2025-07-10 20:19:58,457 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:19:58,461 - utils.websearch - INFO - Starting web search for query: transformers architecture...
+2025-07-10 20:19:59,385 - utils.websearch - INFO - DuckDuckGo search returned 10 results
+2025-07-10 20:20:00,817 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:20:00,819 - langgraph - WARNING - Task agent with path ('__pregel_pull', 'agent') wrote to unknown channel branch:to:end, ignoring it.
+2025-07-10 20:20:00,820 - main - INFO - Research completed for query: transformers architechture...
+2025-07-10 20:20:21,397 - main - INFO - Processing research query: summarize the above definition...
+2025-07-10 20:20:21,586 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 20:20:21,587 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 6.000000 seconds
+2025-07-10 20:20:28,489 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:20:28,491 - langgraph - WARNING - Task agent with path ('__pregel_pull', 'agent') wrote to unknown channel branch:to:end, ignoring it.
+2025-07-10 20:20:28,492 - main - INFO - Research completed for query: summarize the above definition...
+2025-07-10 20:20:58,307 - main - INFO - Processing research query: give citations for the transformer arch...
+2025-07-10 20:21:00,773 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:21:00,776 - langgraph - WARNING - Task agent with path ('__pregel_pull', 'agent') wrote to unknown channel branch:to:end, ignoring it.
+2025-07-10 20:21:00,777 - main - INFO - Research completed for query: give citations for the transformer arch...
+2025-07-10 20:21:49,238 - main - INFO - Processing research query: extract data on the AGI...
+2025-07-10 20:21:50,203 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:21:50,207 - utils.websearch - INFO - Starting web search for query: Artificial General Intelligence (AGI)...
+2025-07-10 20:21:51,181 - utils.websearch - INFO - DuckDuckGo search returned 10 results
+2025-07-10 20:21:52,318 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:21:52,320 - langgraph - WARNING - Task agent with path ('__pregel_pull', 'agent') wrote to unknown channel branch:to:end, ignoring it.
+2025-07-10 20:21:52,321 - main - INFO - Research completed for query: extract data on the AGI...
+2025-07-10 20:24:34,725 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 20:24:36,578 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:24:36,585 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:24:36,585 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:24:37,218 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:24:37,225 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:24:37,225 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:24:37,231 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:24:37,242 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:24:37,242 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:24:37,583 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:24:37,584 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:24:37,584 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:24:37,584 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:24:37,597 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:24:37,598 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:24:37,929 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:24:37,930 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:24:37,930 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:24:37,934 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:24:37,947 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:24:37,947 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:24:38,279 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:24:38,280 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:24:38,281 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:24:38,294 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:24:38,295 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:24:38,623 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:24:38,625 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:24:38,625 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:24:38,873 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:34:35,197 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 20:34:36,975 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:34:36,984 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:34:36,984 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:34:37,617 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:34:37,624 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:34:37,625 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:34:37,630 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:34:37,640 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:34:37,640 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:34:37,974 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:34:37,976 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:34:37,976 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:34:37,976 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:34:37,990 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:34:37,991 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:34:38,333 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:34:38,334 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:34:38,335 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:34:38,339 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:34:38,350 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:34:38,350 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:34:38,711 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:34:38,713 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:34:38,713 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:34:38,727 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:34:38,727 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:34:39,064 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:34:39,066 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:34:39,066 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:34:39,274 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:34:41,024 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:34:41,032 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:34:41,032 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:34:41,527 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:34:41,535 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:34:41,535 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:34:41,540 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:34:41,551 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:34:41,551 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:34:41,883 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:34:41,885 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:34:41,885 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:34:41,885 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:34:41,900 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:34:41,900 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:34:42,233 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:34:42,235 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:34:42,235 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:34:42,239 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:34:42,253 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:34:42,255 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:34:42,775 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:34:42,776 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:34:42,776 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:34:42,791 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:34:42,792 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:34:43,116 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:34:43,117 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:34:43,117 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:34:43,264 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:36:39,349 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 20:36:41,253 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:36:41,260 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:36:41,260 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:36:41,843 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:36:41,851 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:36:41,851 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:36:41,856 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:36:41,865 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:36:41,867 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:36:42,194 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:36:42,196 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:36:42,196 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:36:42,196 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:36:42,209 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:36:42,209 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:36:42,535 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:36:42,537 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:36:42,538 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:36:42,542 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:36:42,553 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:36:42,553 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:36:42,874 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:36:42,875 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:36:42,875 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:36:42,889 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:36:42,889 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:36:43,462 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:36:43,464 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:36:43,464 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:36:43,619 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:36:45,341 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:36:45,349 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:36:45,349 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:36:46,074 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:36:46,082 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:36:46,082 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:36:46,087 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:36:46,097 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:36:46,097 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:36:46,428 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:36:46,429 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:36:46,429 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:36:46,430 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:36:46,444 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:36:46,444 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:36:46,762 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:36:46,764 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:36:46,764 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:36:46,769 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:36:46,780 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:36:46,781 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:36:47,107 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:36:47,108 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:36:47,108 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:36:47,123 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:36:47,123 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:36:47,452 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:36:47,453 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:36:47,454 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:36:47,622 - main - INFO - Research workflow initialized successfully
+2025-07-10 20:38:22,318 - main - INFO - Shutting down Dynamic Research Assistant API
+2025-07-10 20:38:24,178 - main - INFO - Starting Dynamic Research Assistant API
+2025-07-10 20:38:24,187 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:38:24,187 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:38:24,813 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:38:24,820 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:38:24,821 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:38:24,826 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:38:24,836 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:38:24,836 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:38:25,207 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:38:25,208 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:38:25,208 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:38:25,209 - utils.summarizer - INFO - Summarizer initialized with groq provider
+2025-07-10 20:38:25,221 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:38:25,222 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:38:25,594 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:38:25,595 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:38:25,595 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:38:25,599 - utils.websearch - INFO - WebSearch initialized successfully
+2025-07-10 20:38:25,611 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:38:25,611 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:38:25,976 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:38:25,977 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:38:25,977 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:38:25,990 - utils.model_loader - INFO - ModelLoader initialized with provider: groq
+2025-07-10 20:38:25,991 - utils.model_loader - INFO - Loading Groq model: llama3-8b-8192
+2025-07-10 20:38:26,487 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 20:38:26,489 - utils.model_loader - INFO - Model validation successful
+2025-07-10 20:38:26,490 - utils.model_loader - INFO - Successfully loaded groq model
+2025-07-10 20:38:26,647 - main - INFO - Research workflow initialized successfully

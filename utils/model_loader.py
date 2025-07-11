@@ -74,8 +74,6 @@ class ModelLoader:
                 max_tokens=max_tokens
             )
 
-            print(api_key)
-
             # test the llm
             test_prompt = "Hello, please respond with 'OK' if you can understand this message."
             response = llm.invoke(test_prompt)
