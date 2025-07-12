@@ -1,7 +1,6 @@
 # Multi-stage build for production
 FROM python:3.11-slim as builder
 
-# Set working directory
 WORKDIR /app
 
 # Install build dependencies
@@ -17,14 +16,13 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Production stage
 FROM python:3.11-slim
 
-# Set working directory
 WORKDIR /app
 
-# Set environment variables
+# Set environment variables BEFORE copying packages
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONPATH=/app
-ENV PATH=/root/.local/bin:$PATH
+ENV PATH="/root/.local/bin:$PATH"
 
 # Install runtime dependencies
 RUN apt-get update && apt-get install -y \
@@ -37,51 +35,49 @@ COPY --from=builder /root/.local /root/.local
 # Copy application code
 COPY . .
 
-# Create optimized startup script with proper error handling
+# Create startup script with explicit PATH
 RUN echo '#!/bin/bash\n\
 set -e\n\
 \n\
-# Function to handle shutdown\n\
+# Ensure PATH includes local bin\n\
+export PATH="/root/.local/bin:$PATH"\n\
+\n\
+# Verify commands are available\n\
+which uvicorn || echo "uvicorn not found in PATH: $PATH"\n\
+which streamlit || echo "streamlit not found in PATH: $PATH"\n\
+\n\
 cleanup() {\n\
-    echo "Shutting down services..."\n\
-    kill $API_PID 2>/dev/null || true\n\
-    exit 0\n\
+  echo "Shutting down services..."\n\
+  kill $API_PID 2>/dev/null || true\n\
+  exit 0\n\
 }\n\
 \n\
-# Set up signal handlers\n\
 trap cleanup SIGTERM SIGINT\n\
 \n\
-# Start FastAPI server in background\n\
 echo "Starting FastAPI server..."\n\
-python main.py &\n\
+/root/.local/bin/uvicorn main:app --host 0.0.0.0 --port 8000 &\n\
 API_PID=$!\n\
 \n\
-# Wait for API to be ready\n\
 echo "Waiting for API to start..."\n\
 for i in {1..30}; do\n\
-    if curl -f http://localhost:8000/health >/dev/null 2>&1; then\n\
-        echo "API is ready!"\n\
-        break\n\
-    fi\n\
-    sleep 1\n\
+  if curl -f http://localhost:8000/health >/dev/null 2>&1; then\n\
+    echo "API is ready!"\n\
+    break\n\
+  fi\n\
+  sleep 1\n\
 done\n\
 \n\
-# Start Streamlit app\n\
 echo "Starting Streamlit app..."\n\
-streamlit run app.py \\\n\
-    --server.port=7860 \\\n\
-    --server.address=0.0.0.0 \\\n\
-    --server.headless=true \\\n\
-    --server.enableCORS=false \\\n\
-    --server.enableXsrfProtection=false\n\
-' > start.sh && chmod +x start.sh
+/root/.local/bin/streamlit run app.py \\\n\
+  --server.port=7860 \\\n\
+  --server.address=0.0.0.0 \\\n\
+  --server.headless=true \\\n\
+  --server.enableCORS=false \\\n\
+  --server.enableXsrfProtection=false\n' > start.sh && chmod +x start.sh
 
-# Expose port 7860 (HuggingFace Spaces default)
 EXPOSE 7860
 
-# Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
-    CMD curl -f http://localhost:7860/_stcore/health || exit 1
+  CMD curl -f http://localhost:7860/_stcore/health || exit 1
 
-# Run the startup script
 CMD ["./start.sh"]
