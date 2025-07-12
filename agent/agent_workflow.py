@@ -97,19 +97,25 @@ class ResearchAssistantWorkflow:
             conversation_id = state.get("conversation_id")
             max_results = state.get("max_results", 10)
             
-            # Enhanced system prompt with context
+             # Create context-aware system message
             system_content = f"""{self.agent_prompt}
 
-                Context for this conversation:
-                - Conversation ID: {conversation_id}
-                - Max results limit: {max_results}
+                            Available Context:
+                            - Conversation ID: {conversation_id} (use for memory operations)
+                            - Max Results: {max_results} (use for search operations)
 
-                When using tools, consider these parameters as needed."""
-
+                            Tool Parameter Guidelines:
+                            - Memory tools: Always include conversation_id parameter
+                            - Search tools: Use max_results parameter to limit results
+                            - Both parameters are provided in your current context"""
+            
             system_message = SystemMessage(content=system_content)
-            input_messages = [system_message] + messages
-                        
-            response = self.llm_with_tools.invoke(input_messages)
+
+            # Combine system message with existing messages
+            all_messages = [system_message] + messages
+            
+            # Invoke LLM
+            response = self.llm_with_tools.invoke(all_messages)
             
             # Log tool calls if any
             if hasattr(response, 'tool_calls') and response.tool_calls:
@@ -145,35 +151,7 @@ class ResearchAssistantWorkflow:
             self._log_step("continue_error", {"error": error_msg})
             return END
     
-    '''def build_graph(self):
-        """Build the simplified research workflow graph."""
-        try:
-            graph_builder = StateGraph(MessagesState)
-            
-            # Add nodes
-            graph_builder.add_node("agent", self.agent_node)
-            graph_builder.add_node("tools", ToolNode(self.tools))
-            
-            # Add edges
-            graph_builder.add_edge(START, "agent")
-            graph_builder.add_conditional_edges("agent", self.should_continue)
-            graph_builder.add_edge("tools", "agent")
-            
-            self.graph = graph_builder.compile()
 
-            # Generate the graph visualization
-            graph_image = self.graph.get_graph().draw_mermaid_png()
-            
-            with open("agent_graph.png", "wb") as f:
-                f.write(graph_image)
-
-            
-            return self.graph
-            
-        except Exception as e:
-            error_msg = f"Error in build_graph: {str(e)}"
-            logger.error(error_msg)
-            raise Exception(error_msg)'''
     def build_graph(self):
         """Build the simplified research workflow graph."""
         try:
