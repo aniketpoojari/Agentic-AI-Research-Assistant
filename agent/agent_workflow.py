@@ -94,11 +94,21 @@ class ResearchAssistantWorkflow:
             self._log_step("agent_start")
             
             messages = state["messages"]
+            conversation_id = state.get("conversation_id")
+            max_results = state.get("max_results", 10)
             
-            # Add system prompt
-            system_message = SystemMessage(content=self.agent_prompt)
+            # Enhanced system prompt with context
+            system_content = f"""{self.agent_prompt}
+
+                Context for this conversation:
+                - Conversation ID: {conversation_id}
+                - Max results limit: {max_results}
+
+                When using tools, consider these parameters as needed."""
+
+            system_message = SystemMessage(content=system_content)
             input_messages = [system_message] + messages
-            
+                        
             response = self.llm_with_tools.invoke(input_messages)
             
             # Log tool calls if any
