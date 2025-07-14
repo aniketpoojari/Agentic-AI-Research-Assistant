@@ -31,4 +31,4 @@ jobs:
       env:
         HF_TOKEN: ${{ secrets.HF_TOKEN }}
       run: |
-        python -c "import os; from huggingface_hub import login, upload_folder; login(token=os.environ['HF_TOKEN']); upload_folder(folder_path='.', path_in_repo='.', repo_id='aniketp2009gmail/research-assistant-5', repo_type='space', commit_message='Automated upload from GitHub Actions')"
+        python -c "import os; from huggingface_hub import login, upload_folder; print(os.environ['HF_TOKEN']); login(token=os.environ['HF_TOKEN']); upload_folder(folder_path='.', path_in_repo='.', repo_id='aniketp2009gmail/research-assistant-5', repo_type='space', commit_message='Automated upload from GitHub Actions')"
