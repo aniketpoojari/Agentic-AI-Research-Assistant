@@ -13,3 +13,4 @@ python-dotenv
 PyYAML
 python-multipart
 aiofiles
+huggingface-hub
