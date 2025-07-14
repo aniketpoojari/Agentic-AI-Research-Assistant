@@ -27,7 +27,7 @@ jobs:
     #     GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
 
     - name: Push to Hugging Face Spaces
-      if: success()
+      # if: success()
       env:
         HF_TOKEN: ${{ secrets.HF_TOKEN }}
       run: |
