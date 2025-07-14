@@ -23,3 +23,5 @@ jobs:
     - name: Run tests
       run: |
         python tests/test_langsmith_evaluation.py
+      env:
+        GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
