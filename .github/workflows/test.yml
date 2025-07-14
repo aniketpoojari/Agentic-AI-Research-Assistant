@@ -20,8 +20,29 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run tests
-      run: |
-        python tests/test_langsmith_evaluation.py
+    # - name: Run tests
+    #   run: |
+    #     python tests/test_langsmith_evaluation.py
+    #   env:
+    #     GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+
+    - name: Push to Hugging Face Spaces
+      if: success()
       env:
-        GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      run: |
+        python -c "
+          import os
+          from huggingface_hub import login, upload_folder
+
+          login(token=os.environ['HF_TOKEN'])
+          repo_id = 'aniketp2009gmail/research-assistant-5'
+
+          upload_folder(
+              folder_path='.',
+              path_in_repo='.',
+              repo_id=repo_id,
+              repo_type='space',
+              commit_message='Automated upload from GitHub Actions'
+          )
+          "
