@@ -77,7 +77,7 @@ def main():
     initialize_session_state()
     
     # Header
-    st.title("🤖 Research Assistant")
+    st.title("🤖 Agentic Research Assistant")
     st.markdown("Ask any question and the AI will automatically decide which tools to use.")
     
     # Sidebar for settings
