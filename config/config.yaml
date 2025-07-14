@@ -1,0 +1,10 @@
+# API Configurati# Search Configuration
+search:
+  timeout: 30
+  user_agent: "Research Assistant Bot"
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/research_assistant.log"
