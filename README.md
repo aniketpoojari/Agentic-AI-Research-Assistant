@@ -19,11 +19,8 @@ The platform's agent-driven architecture automatically analyzes incoming queries
 
 ## 🚀 Features
 
-### **Autonomous Agent Architecture**
-- **LangGraph-powered state machine** that intelligently selects and chains tools without manual intervention
-- **Multi-step workflow orchestration** with automatic tool selection based on query analysis
-- **Adaptive execution pathways** that adjust tool chains based on intermediate results
-- **Context-aware decision making** that considers conversation history and user preferences
+### **Autonomous Agent Architecture**: Utilizes a LangGraph-powered state machine to intelligently orchestrate multi-step workflows by adaptively selecting and chaining tools based on query analysis, intermediate results, conversation history, and user preferences—enabling fully automated, context-aware decision making.
+
 
 ### **Multi-Provider LLM Support**
 - **Groq Integration** with LLaMA 3 8B model for high-speed processing
