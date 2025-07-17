@@ -26,110 +26,14 @@ The platform's agent-driven architecture automatically analyzes incoming queries
     Tools: `search_web`, `get_page_content`
     - **Summarization Tools**: Support intelligent, multi-layered summarization of complex documents, with capabilities for executive synthesis and key point extraction across multiple sources.
     Tools: `summarize_text`, `create_executive_summary`, `extract_key_points`
-
----
-
-### **Fact Checking Tools**
-
-Automate claim detection and verification using real-time data, multi-source evidence, credibility scoring, and contradiction resolution.
-Tools: `verify_claim`, `extract_and_verify_claims`, `extract_claims`
-
----
-
-### **Data Extraction Tools**
-
-Extract structured data—including metrics, entities, contact info, and tables—from unstructured text with precision and formatting support.
-Tools: `extract_key_metrics`, `extract_entities`, `extract_contact_info`, `extract_table_data`
-
----
-
-### **Citation Management Tools**
-
-Handle automatic citation generation, bibliography creation, and source validation across academic and professional formats.
-Tools: `generate_citations`, `create_bibliography`, `validate_sources`
-
----
-
-### **Memory Management Tools**
-
-Maintain persistent conversation memory, enabling cross-session continuity, historical context retrieval, and intelligent context pruning.
-Tools: `store_conversation`, `get_conversation_history`
-
-
-
-### **Intelligent Tool Orchestration**
-The system includes **20+ specialized tools** organized into six major categories:
-
-#### **Web Search Tools**
-- **Advanced Web Search** with Tavily API integration for enhanced web search with advanced filtering
-- **DuckDuckGo fallback** ensuring search reliability and redundancy
-- **Multi-source aggregation** combining results from multiple search providers
-- **Content extraction** from web pages with intelligent text parsing
-- **Search result ranking** and relevance scoring
-
-Available tools:
-- `search_web` - Comprehensive web search with configurable result limits
-- `get_page_content` - Full content extraction from specific web pages
-
-#### **Summarization Tools**
-- **Intelligent Summarization** with multi-step document processing and chunk-based analysis
-- **Executive summary generation** from multiple document sources
-- **Key point extraction** with configurable detail levels
-- **Hierarchical summarization** for complex document structures
-- **Topic-focused synthesis** that maintains context across multiple sources
-
-Available tools:
-- `summarize_text` - Intelligent text summarization with length control
-- `create_executive_summary` - Multi-document synthesis for executive-level insights
-- `extract_key_points` - Structured extraction of critical information points
-
-#### **Fact Checking Tools**
-- **Real-time Fact Checking** with automated claim extraction from text with entity recognition
-- **Evidence-based verification** using multiple information sources
-- **Confidence scoring** for verification results
-- **Source credibility assessment** and reliability metrics
-- **Contradictory information detection** and resolution
-
-Available tools:
-- `verify_claim` - Individual claim verification with confidence scoring
-- `extract_and_verify_claims` - Automated claim extraction and batch verification
-- `extract_claims` - Factual claim identification from text sources
-
-#### **Data Extraction Tools**
-- **Structured Data Extraction** with metrics and statistics extraction from unstructured text
-- **Named entity recognition** for people, organizations, locations, and products
-- **Contact information parsing** including emails, phones, and addresses
-- **Tabular data extraction** and conversion to structured formats
-- **Financial data identification** and standardization
-
-Available tools:
-- `extract_key_metrics` - Statistical and quantitative data extraction
-- `extract_entities` - Named entity recognition and categorization
-- `extract_contact_info` - Contact information parsing and validation
-- `extract_table_data` - Tabular data extraction and structuring
-
-#### **Citation Management Tools**
-- **Citation Management** with APA, MLA, and Chicago style citation generation
-- **Bibliography creation** with automatic formatting
-- **Source validation** and metadata enrichment
-- **Reference tracking** throughout research sessions
-- **Export capabilities** for academic and professional use
-
-Available tools:
-- `generate_citations` - Multi-format citation generation
-- `create_bibliography` - Comprehensive bibliography creation
-- `validate_sources` - Source validation and metadata enrichment
-
-#### **Memory Management Tools**
-- **Conversation Memory** with persistent session management and context retention
-- **Cross-session continuity** for extended research projects
-- **Context-aware responses** that reference previous interactions
-- **Conversation history access** with search and filtering capabilities
-- **Memory optimization** with intelligent context pruning
-
-Available tools:
-- `store_conversation` - Persistent conversation storage
-- `get_conversation_history` - Historical context retrieval
+    - **Fact Checking Tools**: Automate claim detection and verification using real-time data, multi-source evidence, credibility scoring, and contradiction resolution.
+    Tools: `verify_claim`, `extract_and_verify_claims`, `extract_claims`
+    - **Data Extraction Tools**: Extract structured data—including metrics, entities, contact info, and tables—from unstructured text with precision and formatting support.
+    Tools: `extract_key_metrics`, `extract_entities`, `extract_contact_info`, `extract_table_data`
+    - **Citation Management Tools**: Generate citations, create bibliographies, and validate sources for academic and professional use.
+    Tools: `generate_citations`, `create_bibliography`, `validate_sources`
+    - **Memory Management Tools**: Maintain persistent conversation memory, enabling cross-session continuity, historical context retrieval, and intelligent context pruning.
+    Tools: `store_conversation`, `get_conversation_history`
 
 ### **Dual Interface Design**
 - **FastAPI backend** (port 8000) for programmatic access and integration
