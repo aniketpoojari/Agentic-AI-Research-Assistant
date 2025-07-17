@@ -1,3 +1,14 @@
+---
+title: Agentic AI Research Assistant
+emoji: 🧠
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+app_file: app.py
+pinned: false
+license: mit
+---
+
 # 🧠 Diffusion-Based Text-to-Image Generation
 
 An **advanced agentic AI research assistant** that revolutionizes research workflows through intelligent automation and sophisticated tool orchestration. This cutting-edge system leverages a LangGraph-powered state machine architecture to autonomously select, chain, and execute specialized tools, transforming complex research tasks into streamlined, efficient processes without requiring manual intervention.
@@ -229,15 +240,3 @@ Organizations using the Dynamic Research Assistant report:
 - **Collaboration**: Enhanced team research capabilities through API integration
 
 The system's autonomous agent architecture transforms traditional research workflows by eliminating manual intervention while maintaining high accuracy and comprehensive coverage across diverse information sources and research methodologies
-
-
----
-title: Agentic AI Research Assistant
-emoji: 🧠
-colorFrom: indigo
-colorTo: purple
-sdk: docker
-app_file: app.py
-pinned: false
-license: mit
----
