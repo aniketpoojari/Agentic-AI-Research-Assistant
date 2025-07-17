@@ -20,14 +20,42 @@ The platform's agent-driven architecture automatically analyzes incoming queries
 ## 🚀 Features
 
 - **Autonomous Agent Architecture**: Utilizes a LangGraph-powered state machine to intelligently orchestrate multi-step workflows by adaptively selecting and chaining tools based on query analysis, intermediate results, conversation history, and user preferences—enabling fully automated, context-aware decision making.
+- **Multi-Provider LLM Support**: Enables dynamic model selection and seamless switching between providers like Groq (LLaMA 3 8B) and OpenAI (GPT-4), optimizing for speed, availability, and task-specific requirements without requiring system reconfiguration.
+- **Tools**:
+-- **Web Search Tools**: Enables advanced, multi-source web search with intelligent result aggregation, content extraction, and redundancy support for reliable information retrieval.
+Tools: `search_web`, `get_page_content`
+-- **Summarization Tools**: Support intelligent, multi-layered summarization of complex documents, with capabilities for executive synthesis and key point extraction across multiple sources.
+Tools: `summarize_text`, `create_executive_summary`, `extract_key_points`
+
+---
+
+### **Fact Checking Tools**
+
+Automate claim detection and verification using real-time data, multi-source evidence, credibility scoring, and contradiction resolution.
+Tools: `verify_claim`, `extract_and_verify_claims`, `extract_claims`
+
+---
+
+### **Data Extraction Tools**
+
+Extract structured data—including metrics, entities, contact info, and tables—from unstructured text with precision and formatting support.
+Tools: `extract_key_metrics`, `extract_entities`, `extract_contact_info`, `extract_table_data`
+
+---
+
+### **Citation Management Tools**
+
+Handle automatic citation generation, bibliography creation, and source validation across academic and professional formats.
+Tools: `generate_citations`, `create_bibliography`, `validate_sources`
+
+---
+
+### **Memory Management Tools**
+
+Maintain persistent conversation memory, enabling cross-session continuity, historical context retrieval, and intelligent context pruning.
+Tools: `store_conversation`, `get_conversation_history`
 
 
-### **Multi-Provider LLM Support**
-- **Groq Integration** with LLaMA 3 8B model for high-speed processing
-- **OpenAI Compatibility** supporting GPT-4 and other OpenAI models
-- **Anthropic Support** with Claude model integration
-- **Seamless provider switching** without system reconfiguration
-- **Dynamic model selection** based on task requirements and availability
 
 ### **Intelligent Tool Orchestration**
 The system includes **20+ specialized tools** organized into six major categories:
