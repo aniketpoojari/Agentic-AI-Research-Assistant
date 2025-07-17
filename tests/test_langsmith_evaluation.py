@@ -4,7 +4,7 @@ import sys
 import os
 import json
 from datetime import datetime
-from typing import Dict, Any, List
+from typing import Dict, Any
 import uuid
 
 # Add project root to path
