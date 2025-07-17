@@ -39,7 +39,7 @@ The platform's agent-driven architecture automatically analyzes incoming queries
 
 - **Dual Interface Design**: Features a FastAPI backend running on port 8000 that provides programmatic access and seamless integration capabilities, a Streamlit frontend on port 7860 delivering an interactive web-based research environment, RESTful API endpoints designed for comprehensive system integration and automation workflows, real-time execution tracking with detailed workflow visualization to monitor process progress, and a responsive web interface optimized for various device types to ensure accessibility across desktop, tablet, and mobile platforms.
 
-- **Comprehensive Testing Suite**: Incorporates LangSmith integration for quality evaluation and performance monitoring, trajectory analysis to ensure optimal tool selection patterns, response quality scoring with multiple evaluation criteria, automated testing pipelines for continuous quality assurance, and performance benchmarking across different query types and complexity levels to maintain consistent system reliability and effectiveness.
+- **Robust Automated Testing and Continuous Deployment Pipeline**: Every Git push triggers an integrated testing workflow powered by GitHub Actions, running the comprehensive test suite—including LangSmith-guided quality checks, trajectory analysis for tool orchestration, response quality evaluation, and performance benchmarking. Only after all tests pass is the codebase automatically deployed to Huggingface Spaces, ensuring users always access the latest, fully tested, and reliable version of the platform.
 
 
 ## 🔧 Quickstart
