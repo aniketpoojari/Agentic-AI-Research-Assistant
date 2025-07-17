@@ -19,7 +19,7 @@ The platform's agent-driven architecture automatically analyzes incoming queries
 
 ## 🚀 Features
 
-### **Autonomous Agent Architecture**: Utilizes a LangGraph-powered state machine to intelligently orchestrate multi-step workflows by adaptively selecting and chaining tools based on query analysis, intermediate results, conversation history, and user preferences—enabling fully automated, context-aware decision making.
+- **Autonomous Agent Architecture**: Utilizes a LangGraph-powered state machine to intelligently orchestrate multi-step workflows by adaptively selecting and chaining tools based on query analysis, intermediate results, conversation history, and user preferences—enabling fully automated, context-aware decision making.
 
 
 ### **Multi-Provider LLM Support**
