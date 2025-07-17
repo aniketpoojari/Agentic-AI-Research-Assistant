@@ -23,9 +23,9 @@ The platform's agent-driven architecture automatically analyzes incoming queries
 - **Multi-Provider LLM Support**: Enables dynamic model selection and seamless switching between providers like Groq (LLaMA 3 8B) and OpenAI (GPT-4), optimizing for speed, availability, and task-specific requirements without requiring system reconfiguration.
 - **Tools**:
     - **Web Search Tools**: Enables advanced, multi-source web search with intelligent result aggregation, content extraction, and redundancy support for reliable information retrieval.
-Tools: `search_web`, `get_page_content`
+    Tools: `search_web`, `get_page_content`
     - **Summarization Tools**: Support intelligent, multi-layered summarization of complex documents, with capabilities for executive synthesis and key point extraction across multiple sources.
-Tools: `summarize_text`, `create_executive_summary`, `extract_key_points`
+    Tools: `summarize_text`, `create_executive_summary`, `extract_key_points`
 
 ---
 
