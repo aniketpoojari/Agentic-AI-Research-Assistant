@@ -20,7 +20,9 @@ The platform's agent-driven architecture automatically analyzes incoming queries
 ## 🚀 Features
 
 - **Autonomous Agent Architecture**: Utilizes a LangGraph-powered state machine to intelligently orchestrate multi-step workflows by adaptively selecting and chaining tools based on query analysis, intermediate results, conversation history, and user preferences—enabling fully automated, context-aware decision making.
+
 - **Multi-Provider LLM Support**: Enables dynamic model selection and seamless switching between providers like Groq (LLaMA 3 8B) and OpenAI (GPT-4), optimizing for speed, availability, and task-specific requirements without requiring system reconfiguration.
+
 - **Tools**:
     - **Web Search Tools**: Enables advanced, multi-source web search with intelligent result aggregation, content extraction, and redundancy support for reliable information retrieval.
     Tools: `search_web`, `get_page_content`
@@ -35,42 +37,12 @@ The platform's agent-driven architecture automatically analyzes incoming queries
     - **Memory Management Tools**: Maintain persistent conversation memory, enabling cross-session continuity, historical context retrieval, and intelligent context pruning.
     Tools: `store_conversation`, `get_conversation_history`
 
-### **Dual Interface Design**
-- **FastAPI backend** (port 8000) for programmatic access and integration
-- **Streamlit frontend** (port 7860) for interactive web-based research
-- **RESTful API endpoints** for system integration and automation
-- **Real-time execution tracking** with detailed workflow visualization
-- **Responsive web interface** optimized for various device types
+- **Dual Interface Design**: Features a FastAPI backend running on port 8000 that provides programmatic access and seamless integration capabilities, a Streamlit frontend on port 7860 delivering an interactive web-based research environment, RESTful API endpoints designed for comprehensive system integration and automation workflows, real-time execution tracking with detailed workflow visualization to monitor process progress, and a responsive web interface optimized for various device types to ensure accessibility across desktop, tablet, and mobile platforms.
 
-### **Comprehensive Testing Suite**
-- **LangSmith integration** for quality evaluation and performance monitoring
-- **Trajectory analysis** ensuring optimal tool selection patterns
-- **Response quality scoring** with multiple evaluation criteria
-- **Automated testing pipelines** for continuous quality assurance
-- **Performance benchmarking** across different query types and complexity levels
-
-### **Dual Interface Design**
-- **FastAPI backend** (port 8000) for programmatic access and integration
-- **Streamlit frontend** (port 7860) for interactive web-based research
-- **RESTful API endpoints** for system integration and automation
-- **Real-time execution tracking** with detailed workflow visualization
-- **Responsive web interface** optimized for various device types
-
-### **Comprehensive Testing Suite**
-- **LangSmith integration** for quality evaluation and performance monitoring
-- **Trajectory analysis** ensuring optimal tool selection patterns
-- **Response quality scoring** with multiple evaluation criteria
-- **Automated testing pipelines** for continuous quality assurance
-- **Performance benchmarking** across different query types and complexity levels
+- **Comprehensive Testing Suite**: Incorporates LangSmith integration for quality evaluation and performance monitoring, trajectory analysis to ensure optimal tool selection patterns, response quality scoring with multiple evaluation criteria, automated testing pipelines for continuous quality assurance, and performance benchmarking across different query types and complexity levels to maintain consistent system reliability and effectiveness.
 
 
 ## 🔧 Quickstart
-
-### Prerequisites
-- **Python 3.11** or higher
-- **Required API Keys** (set as environment variables):
-  - `GROQ_API_KEY` – Primary LLM provider (mandatory)
-  - `TAVILY_API_KEY` – Enhanced web search (optional)
 
 ### Local Installation
 
@@ -110,14 +82,14 @@ docker run -p 8000:8000 -p 7860:7860 \
 ## 📌 Results
 
 ### **System Performance Metrics**
-Based on the latest LangSmith evaluation results, the Dynamic Research Assistant demonstrates exceptional performance across all testing dimensions:
+Based on the LangSmith evaluation results, the Dynamic Research Assistant demonstrates exceptional performance across all testing dimensions:
 
-| Metric | Performance | Test Date | Status |
-|--------|-------------|-----------|--------|
-| **Final Response Quality** | 100% (0.999 score) | July 17, 2025 | ✅ Passed |
-| **Trajectory Execution** | 100% success rate | July 17, 2025 | ✅ Passed |
-| **Individual Tool Performance** | 100% (3/3 tools) | July 17, 2025 | ✅ Passed |
-| **Overall Test Suite** | 100% pass rate | July 17, 2025 | ✅ Passed |
+| Metric | Performance | Status |
+|--------|-------------|--------|
+| **Final Response Quality** | 100% (0.999 score) | ✅ Passed |
+| **Trajectory Execution** | 100% success rate | ✅ Passed |
+| **Individual Tool Performance** | 100% (3/3 tools) | ✅ Passed |
+| **Overall Test Suite** | 100% pass rate | ✅ Passed |
 
 ### **Detailed Test Results**
 
@@ -155,43 +127,3 @@ The LangGraph-powered state machine executed flawlessly with intelligent tool or
 - **Verification Confidence**: 90% confidence score
 - **Accuracy**: "True" verification status for tested claims
 - **Reliability**: Consistent fact-checking across diverse content types
-
-### **Real-World Performance Validation**
-
-#### **Research Capability Results**
-The testing demonstrates the system's ability to handle:
-
-- **Complex Technical Queries**: Renewable energy storage technology research with comprehensive responses
-- **Academic Research**: AI safety paper analysis with automated summarization
-- **Multi-Step Workflows**: Seamless integration of search, analysis, and synthesis operations
-- **Quality Assurance**: Consistent high-quality outputs across diverse research domains
-
-#### **Agent Architecture Validation**
-The autonomous agent architecture shows:
-
-- **Intelligent Tool Selection**: Automatic selection of appropriate tools based on query analysis
-- **Workflow Optimization**: Efficient execution paths with minimal redundancy
-- **Error Handling**: Robust performance with graceful handling of complex scenarios
-- **Scalability**: Consistent performance across different query types and complexity levels
-
-#### **Technology Stack Reliability**
-The comprehensive testing confirms:
-
-- **LangGraph Integration**: Seamless state machine execution with 100% success rate
-- **LangSmith Monitoring**: Effective quality evaluation and performance tracking
-- **Tool Orchestration**: Reliable coordination of 20+ specialized tools
-- **Response Generation**: Consistent high-quality output generation
-
-### **Production Readiness Indicators**
-
-Based on the evaluation results, the Dynamic Research Assistant demonstrates:
-
-- **Enterprise-Grade Quality**: 99.9% quality scores suitable for professional research applications
-- **Reliable Performance**: 100% test pass rate across all evaluation categories
-- **Scalable Architecture**: Efficient tool selection and workflow execution
-- **Comprehensive Coverage**: Successfully handles diverse research domains from technical to academic topics
-
-The system is validated for production deployment with confidence in its ability to deliver consistent, high-quality research assistance across various use cases and complexity levels.
-
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/56778278/cbd701a8-e06a-43b7-8042-d7a9e3d68e7d/format.txt
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/56778278/53c07747-2806-4bc1-9048-c2d13ad04100/New-Text-Document.txt
