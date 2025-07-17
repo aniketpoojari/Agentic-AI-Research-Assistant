@@ -21,47 +21,79 @@ The platform's agent-driven architecture automatically analyzes incoming queries
 - **Seamless provider switching** without system reconfiguration
 - **Dynamic model selection** based on task requirements and availability
 
-### **Advanced Web Search**
-- **Tavily API integration** for enhanced web search with advanced filtering
+### **Intelligent Tool Orchestration**
+The system includes **20+ specialized tools** organized into six major categories:
+
+#### **Web Search Tools**
+- **Advanced Web Search** with Tavily API integration for enhanced web search with advanced filtering
 - **DuckDuckGo fallback** ensuring search reliability and redundancy
 - **Multi-source aggregation** combining results from multiple search providers
 - **Content extraction** from web pages with intelligent text parsing
 - **Search result ranking** and relevance scoring
 
-### **Intelligent Summarization**
-- **Multi-step document processing** with chunk-based analysis
+Available tools:
+- `search_web` - Comprehensive web search with configurable result limits
+- `get_page_content` - Full content extraction from specific web pages
+
+#### **Summarization Tools**
+- **Intelligent Summarization** with multi-step document processing and chunk-based analysis
 - **Executive summary generation** from multiple document sources
 - **Key point extraction** with configurable detail levels
 - **Hierarchical summarization** for complex document structures
 - **Topic-focused synthesis** that maintains context across multiple sources
 
-### **Real-time Fact Checking**
-- **Automated claim extraction** from text with entity recognition
+Available tools:
+- `summarize_text` - Intelligent text summarization with length control
+- `create_executive_summary` - Multi-document synthesis for executive-level insights
+- `extract_key_points` - Structured extraction of critical information points
+
+#### **Fact Checking Tools**
+- **Real-time Fact Checking** with automated claim extraction from text with entity recognition
 - **Evidence-based verification** using multiple information sources
 - **Confidence scoring** for verification results
 - **Source credibility assessment** and reliability metrics
 - **Contradictory information detection** and resolution
 
-### **Structured Data Extraction**
-- **Metrics and statistics extraction** from unstructured text
+Available tools:
+- `verify_claim` - Individual claim verification with confidence scoring
+- `extract_and_verify_claims` - Automated claim extraction and batch verification
+- `extract_claims` - Factual claim identification from text sources
+
+#### **Data Extraction Tools**
+- **Structured Data Extraction** with metrics and statistics extraction from unstructured text
 - **Named entity recognition** for people, organizations, locations, and products
 - **Contact information parsing** including emails, phones, and addresses
 - **Tabular data extraction** and conversion to structured formats
 - **Financial data identification** and standardization
 
-### **Citation Management**
-- **APA, MLA, and Chicago style** citation generation
+Available tools:
+- `extract_key_metrics` - Statistical and quantitative data extraction
+- `extract_entities` - Named entity recognition and categorization
+- `extract_contact_info` - Contact information parsing and validation
+- `extract_table_data` - Tabular data extraction and structuring
+
+#### **Citation Management Tools**
+- **Citation Management** with APA, MLA, and Chicago style citation generation
 - **Bibliography creation** with automatic formatting
 - **Source validation** and metadata enrichment
 - **Reference tracking** throughout research sessions
 - **Export capabilities** for academic and professional use
 
-### **Conversation Memory**
-- **Persistent session management** with context retention
+Available tools:
+- `generate_citations` - Multi-format citation generation
+- `create_bibliography` - Comprehensive bibliography creation
+- `validate_sources` - Source validation and metadata enrichment
+
+#### **Memory Management Tools**
+- **Conversation Memory** with persistent session management and context retention
 - **Cross-session continuity** for extended research projects
 - **Context-aware responses** that reference previous interactions
 - **Conversation history access** with search and filtering capabilities
 - **Memory optimization** with intelligent context pruning
+
+Available tools:
+- `store_conversation` - Persistent conversation storage
+- `get_conversation_history` - Historical context retrieval
 
 ### **Dual Interface Design**
 - **FastAPI backend** (port 8000) for programmatic access and integration
@@ -77,37 +109,20 @@ The platform's agent-driven architecture automatically analyzes incoming queries
 - **Automated testing pipelines** for continuous quality assurance
 - **Performance benchmarking** across different query types and complexity levels
 
-### **Intelligent Tool Orchestration**
-The system includes **20+ specialized tools** organized into six major categories:
+### **Dual Interface Design**
+- **FastAPI backend** (port 8000) for programmatic access and integration
+- **Streamlit frontend** (port 7860) for interactive web-based research
+- **RESTful API endpoints** for system integration and automation
+- **Real-time execution tracking** with detailed workflow visualization
+- **Responsive web interface** optimized for various device types
 
-#### **Web Search Tools**
-- `search_web` - Comprehensive web search with configurable result limits
-- `get_page_content` - Full content extraction from specific web pages
+### **Comprehensive Testing Suite**
+- **LangSmith integration** for quality evaluation and performance monitoring
+- **Trajectory analysis** ensuring optimal tool selection patterns
+- **Response quality scoring** with multiple evaluation criteria
+- **Automated testing pipelines** for continuous quality assurance
+- **Performance benchmarking** across different query types and complexity levels
 
-#### **Summarization Tools**
-- `summarize_text` - Intelligent text summarization with length control
-- `create_executive_summary` - Multi-document synthesis for executive-level insights
-- `extract_key_points` - Structured extraction of critical information points
-
-#### **Fact Checking Tools**
-- `verify_claim` - Individual claim verification with confidence scoring
-- `extract_and_verify_claims` - Automated claim extraction and batch verification
-- `extract_claims` - Factual claim identification from text sources
-
-#### **Data Extraction Tools**
-- `extract_key_metrics` - Statistical and quantitative data extraction
-- `extract_entities` - Named entity recognition and categorization
-- `extract_contact_info` - Contact information parsing and validation
-- `extract_table_data` - Tabular data extraction and structuring
-
-#### **Citation Management Tools**
-- `generate_citations` - Multi-format citation generation
-- `create_bibliography` - Comprehensive bibliography creation
-- `validate_sources` - Source validation and metadata enrichment
-
-#### **Memory Management Tools**
-- `store_conversation` - Persistent conversation storage
-- `get_conversation_history` - Historical context retrieval
 
 ## 🔧 Quickstart
 
@@ -116,8 +131,6 @@ The system includes **20+ specialized tools** organized into six major categorie
 - **Required API Keys** (set as environment variables):
   - `GROQ_API_KEY` – Primary LLM provider (mandatory)
   - `TAVILY_API_KEY` – Enhanced web search (optional)
-  - `OPENAI_API_KEY` – Alternative LLM provider (optional)
-  - `ANTHROPIC_API_KEY` – Alternative LLM provider (optional)
 
 ### Local Installation
 
@@ -125,10 +138,6 @@ The system includes **20+ specialized tools** organized into six major categorie
 # Clone the repository
 git clone https://github.com/your-org/dynamic-research-assistant.git
 cd dynamic-research-assistant
-
-# Create and activate virtual environment
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -138,10 +147,10 @@ export GROQ_API_KEY="your-groq-api-key"
 export TAVILY_API_KEY="your-tavily-api-key"  # Optional
 
 # Start the FastAPI backend
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+uvicorn main:app --reload --reload-ignore "logs/*"
 
 # In a new terminal, start the Streamlit frontend
-streamlit run app.py --server.port 7860 --server.address 0.0.0.0
+streamlit run app.py
 ```
 
 ### Docker Deployment
@@ -157,41 +166,6 @@ docker run -p 8000:8000 -p 7860:7860 \
   research-assistant
 ```
 
-### Configuration Management
-
-The system uses **YAML-based configuration** with environment variable overrides:
-
-```yaml
-# config/config.yaml
-search:
-  timeout: 30
-  user_agent: "Research Assistant Bot"
-
-logging:
-  level: "INFO"
-  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-  file: "logs/research_assistant.log"
-```
-
-Environment variables can override any configuration setting:
-- `MODEL_PROVIDER` - Switch between groq, openai, or anthropic
-- `MODEL_NAME` - Specify the exact model to use
-- `MODEL_TEMPERATURE` - Control response creativity (0.0-1.0)
-- `API_HOST` - Configure API host binding
-- `API_PORT` - Set custom API port
-
-### Quick API Test
-
-```bash
-# Test the research endpoint
-curl -X POST "http://localhost:8000/research" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "query": "Latest developments in renewable energy storage",
-    "conversation_id": "test-session-001",
-    "max_results": 5
-  }'
-```
 
 ## 📌 Results
 
@@ -256,8 +230,6 @@ Organizations using the Dynamic Research Assistant report:
 
 The system's autonomous agent architecture transforms traditional research workflows by eliminating manual intervention while maintaining high accuracy and comprehensive coverage across diverse information sources and research methodologies.
 
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/56778278/cbd701a8-e06a-43b7-8042-d7a9e3d68e7d/format.txt
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/56778278/53c07747-2806-4bc1-9048-c2d13ad04100/New-Text-Document.txt
 
 ---
 title: Agentic AI Research Assistant
