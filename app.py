@@ -92,13 +92,10 @@ def main():
 
         st.divider()
 
-        if st.button("Clear Chat History", type="primary"):
+        if st.button("Clear Chat", type="primary"):
             st.session_state["chat_history"] = []
             st.session_state["conversation_id"] = str(uuid.uuid4())
             st.rerun()
-
-        st.divider()
-        st.caption(f"Session: {st.session_state['conversation_id'][:8]}...")
 
     # Chat interface
     st.header("Chat")
