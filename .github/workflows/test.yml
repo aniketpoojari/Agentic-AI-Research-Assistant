@@ -80,12 +80,25 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run LangSmith evaluation suite
-        run: python tests/test_langsmith_evaluation.py
+        id: tests
+        run: |
+          python tests/test_langsmith_evaluation.py 2>&1 | tee test_output.txt
+          echo "TEST_OUTPUT<<EOF" >> $GITHUB_OUTPUT
+          tail -30 test_output.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           LANGSMITH_API_KEY: ${{ secrets.LANGSMITH_API_KEY }}
           LANGSMITH_TRACING: 'true'
+
+      - name: Test Summary
+        if: always()
+        run: |
+          echo "## 🧪 Test Results" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          tail -20 test_output.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
