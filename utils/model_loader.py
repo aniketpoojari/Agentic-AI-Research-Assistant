@@ -39,8 +39,9 @@ class ModelLoader:
                 error_msg = f"Unsupported model provider: {self.model_provider}"
                 raise Exception(error_msg)
             
-            self.validate_model()
-                        
+            # Skip validation to avoid extra LangSmith traces
+            # self.validate_model()
+
             logger.info(f"Successfully loaded {self.model_provider} model")
             return self.llm
             
