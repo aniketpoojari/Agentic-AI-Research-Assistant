@@ -179,7 +179,7 @@ class ResearchAssistantWorkflow:
         """Clear the execution trace."""
         self.execution_trace = []
     
-    def run_research(self, query, conversation_id=None, max_results=5, history_limit=4):
+    def run_research(self, query, conversation_id=None, max_results=5):
         """Run a research query through the workflow."""
         try:
             if not self.graph:

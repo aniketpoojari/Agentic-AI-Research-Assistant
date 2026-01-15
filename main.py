@@ -95,9 +95,9 @@ def get_workflow():
     return workflow_instance
 
 
-def run_research_sync(workflow, query: str, conversation_id: str, max_results: int, history_limit: int) -> Dict[str, Any]:
+def run_research_sync(workflow, query: str, conversation_id: str, max_results: int) -> Dict[str, Any]:
     """Synchronous research execution for thread pool."""
-    result = workflow.run_research(query, conversation_id, max_results, history_limit)
+    result = workflow.run_research(query, conversation_id, max_results)
     execution_trace = workflow.get_execution_trace()
 
     if result and result.get("messages"):
@@ -180,7 +180,6 @@ async def research_endpoint(
         query = request_data.get("query", "").strip()
         conversation_id = request_data.get("conversation_id") or str(uuid.uuid4())
         max_results = request_data.get("max_results", 5)
-        history_limit = request_data.get("history_limit", 4)
 
         if not query:
             raise HTTPException(status_code=400, detail="Query is required")
@@ -207,8 +206,7 @@ async def research_endpoint(
             workflow,
             query,
             conversation_id,
-            max_results,
-            history_limit
+            max_results
         )
 
         # Build response

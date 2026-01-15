@@ -27,10 +27,10 @@ def initialize_session_state():
         st.session_state["chat_history"] = []
 
 
-def run_research(workflow, query: str, conversation_id: str, max_results: int, history_limit: int):
+def run_research(workflow, query: str, conversation_id: str, max_results: int):
     """Run research query through the workflow."""
     try:
-        result = workflow.run_research(query, conversation_id, max_results, history_limit)
+        result = workflow.run_research(query, conversation_id, max_results)
         execution_trace = workflow.get_execution_trace()
 
         if result and result.get("messages"):
@@ -108,17 +108,8 @@ def main():
             "Max Search Results",
             min_value=1,
             max_value=10,
-            value=5,
+            value=3,
             help="Number of search results to fetch."
-        )
-
-        st.subheader("Memory Settings")
-        history_limit = st.slider(
-            "Conversation History",
-            min_value=0,
-            max_value=10,
-            value=4,
-            help="Number of past messages to include for context."
         )
 
         st.divider()
@@ -163,8 +154,7 @@ def main():
                     workflow,
                     prompt,
                     st.session_state["conversation_id"],
-                    max_results,
-                    history_limit
+                    max_results
                 )
 
                 if error:
