@@ -5,10 +5,31 @@ import yaml
 from pathlib import Path
 from typing import Any, Optional
 from dotenv import load_dotenv
-from logger.logging import get_logger
 
+# Load .env BEFORE any other imports that might need env vars
+# Try multiple possible locations
+_project_root = Path(__file__).parent.parent
+_env_paths = [
+    _project_root / ".env",           # Project root
+    Path.cwd() / ".env",              # Current working directory
+    Path(".env"),                      # Relative path
+]
+
+_env_loaded = False
+for _env_path in _env_paths:
+    if _env_path.exists():
+        load_dotenv(dotenv_path=_env_path, override=True)
+        _env_loaded = True
+        print(f"[CONFIG] Loaded .env from: {_env_path.absolute()}")
+        break
+
+if not _env_loaded:
+    # This is fine on HuggingFace Spaces where secrets are set as env vars
+    pass
+
+# Now import logger after dotenv is loaded
+from logger.logging import get_logger
 logger = get_logger(__name__)
-load_dotenv(dotenv_path="../.env")
 
 class ConfigLoader:
     """Loads configuration from YAML files and environment variables."""

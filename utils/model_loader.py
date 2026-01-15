@@ -58,7 +58,7 @@ class ModelLoader:
                 logger.error(error_msg)
                 raise Exception(error_msg)
                 
-            model_name = self.config.get_env("MODEL_NAME", "llama3-8b-8192")
+            model_name = self.config.get_env("MODEL_NAME", "llama-3.1-8b-instant")
             temperature = self.config.get_env("MODEL_TEMPERATURE", 0.1)
             max_tokens = self.config.get("MODEL_MAX_TOKENS", 4096)
             

@@ -1,7 +1,9 @@
 """Summarization utility for the Dynamic Research Assistant."""
 
+import hashlib
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from utils.model_loader import ModelLoader
+from utils.cache import llm_cache
 from logger.logging import get_logger
 
 logger = get_logger(__name__)
@@ -27,26 +29,39 @@ class Summarizer:
 
     def summarize_text(self, text, max_length=500):
         """Summarize a single text."""
-        
+
         try:
             if not text or not text.strip():
                 return "No text provided for summarization"
-            
+
             if len(text) <= max_length:
                 return text
-            
+
+            # Generate cache key from text hash and max_length
+            text_hash = hashlib.md5(text.encode()).hexdigest()
+            cache_key = f"summary:{text_hash}:{max_length}"
+
+            # Check cache first
+            cached_summary = llm_cache.get(cache_key)
+            if cached_summary is not None:
+                logger.info(f"Returning cached summary for text hash: {text_hash[:8]}...")
+                return cached_summary
+
             prompt = f"""Please provide a concise summary of the following text in approximately {max_length} words:
 
                         Text: {text}
 
                         Summary:"""
-            
+
             response = self.llm.invoke(prompt)
             summary = response.content.strip()
-            
+
             if not summary:
                 return "Unable to generate summary"
-            
+
+            # Cache the summary (30 min TTL)
+            llm_cache.set(cache_key, summary, ttl=1800)
+
             logger.info(f"Text summarized successfully: {len(text)} -> {len(summary)} characters")
             return summary
             

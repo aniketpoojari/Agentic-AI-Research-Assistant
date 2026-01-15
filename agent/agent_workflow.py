@@ -5,7 +5,7 @@ from prompt_library.prompt import SYSTEM_PROMPT, AGENT_PROMPT
 
 from langgraph.graph import StateGraph, MessagesState, END, START
 from langgraph.prebuilt import ToolNode, tools_condition
-from langchain.schema import HumanMessage, SystemMessage
+from langchain.schema import HumanMessage, SystemMessage, AIMessage
 
 # Import all tools
 from tools.web_search_tool import WebSearchTool
@@ -92,24 +92,14 @@ class ResearchAssistantWorkflow:
         """Main agent node that decides which tools to use."""
         try:
             self._log_step("agent_start")
-            
+
             messages = state["messages"]
-            conversation_id = state.get("conversation_id")
             max_results = state.get("max_results", 10)
-            
-             # Create context-aware system message
-            system_content = f"""{self.agent_prompt}
 
-                            Available Context:
-                            - Conversation ID: {conversation_id} (use for memory operations)
-                            - Max Results: {max_results} (use for search operations)
+            # Format the agent prompt
+            formatted_prompt = self.agent_prompt.format(max_results=max_results)
 
-                            Tool Parameter Guidelines:
-                            - Memory tools: Always include conversation_id parameter
-                            - Search tools: Use max_results parameter to limit results
-                            - Both parameters are provided in your current context"""
-            
-            system_message = SystemMessage(content=system_content)
+            system_message = SystemMessage(content=formatted_prompt)
 
             # Combine system message with existing messages
             all_messages = [system_message] + messages
@@ -189,56 +179,43 @@ class ResearchAssistantWorkflow:
         """Clear the execution trace."""
         self.execution_trace = []
     
-    def run_research(self, query, conversation_id=None, max_results=10):
+    def run_research(self, query, conversation_id=None, max_results=5, history_limit=4):
         """Run a research query through the workflow."""
         try:
             if not self.graph:
                 self.build_graph()
-            
+
             # Clear previous execution trace
             self.clear_execution_trace()
-            
-            self._log_step("workflow_start", {"query": query[:100]})
-            
-            # Automatically store the user query
+
+            # Set session ID for memory tools
             if conversation_id:
-                try:
-                    store_tool = next(tool for tool in self.tools if hasattr(tool, 'name') and tool.name == "store_conversation")
-                    store_tool.invoke({
-                        "session_id": conversation_id,
-                        "message": query,
-                        "role": "user"
-                    })
-                except:
-                    pass  # Continue even if storing fails
-            
-            # Create initial message
+                self.memory_tools.set_session_id(conversation_id)
+
+            self._log_step("workflow_start", {"query": query[:100]})
+
+            # Store user query in memory
+            self.memory_tools.add_message("user", query)
+
+            # Create message with current query only
+            # The agent can use get_conversation_history tool if it needs past context
             initial_message = HumanMessage(content=query)
-            
+
             # Initialize state
             initial_state = {
                 "messages": [initial_message],
                 "conversation_id": conversation_id,
                 "max_results": max_results
             }
-            
+
             # Run the workflow
             result = self.graph.invoke(initial_state)
-            
-            # Automatically store the assistant response
-            if conversation_id and result["messages"]:
-                try:
-                    store_tool = next(tool for tool in self.tools if hasattr(tool, 'name') and tool.name == "store_conversation")
-                    last_response = result["messages"][-1]
-                    response_content = last_response.content if hasattr(last_response, 'content') else str(last_response)
-                    
-                    store_tool.invoke({
-                        "session_id": conversation_id,
-                        "message": response_content,
-                        "role": "assistant"
-                    })
-                except:
-                    pass  # Continue even if storing fails
+
+            # Store assistant response in memory
+            if result["messages"]:
+                last_response = result["messages"][-1]
+                response_content = last_response.content if hasattr(last_response, 'content') else str(last_response)
+                self.memory_tools.add_message("assistant", response_content)
             
             self._log_step("workflow_complete")
             

@@ -3,13 +3,14 @@ title: Agentic AI Research Assistant
 emoji: 🧠
 colorFrom: indigo
 colorTo: purple
-sdk: docker
+sdk: streamlit
+sdk_version: 1.40.0
 app_file: app.py
 pinned: false
 license: mit
 ---
 
-# 🧠 Diffusion-Based Text-to-Image Generation
+# 🧠 Agentic AI Research Assistant
 
 An **advanced agentic AI research assistant** that revolutionizes research workflows through intelligent automation and sophisticated tool orchestration. This cutting-edge system leverages a LangGraph-powered state machine architecture to autonomously select, chain, and execute specialized tools, transforming complex research tasks into streamlined, efficient processes without requiring manual intervention.
 
@@ -34,8 +35,8 @@ The platform's agent-driven architecture automatically analyzes incoming queries
     Tools: `extract_key_metrics`, `extract_entities`, `extract_contact_info`, `extract_table_data`
     - **Citation Management Tools**: Generate citations, create bibliographies, and validate sources for academic and professional use.
     Tools: `generate_citations`, `create_bibliography`, `validate_sources`
-    - **Memory Management Tools**: Maintain persistent conversation memory, enabling cross-session continuity, historical context retrieval, and intelligent context pruning.
-    Tools: `store_conversation`, `get_conversation_history`
+    - **Memory Management Tools**: Maintain persistent conversation memory, enabling cross-session continuity and historical context retrieval.
+    Tools: `get_conversation_history`
 
 - **Dual Interface Design**: Features a FastAPI backend running on port 8000 that provides programmatic access and seamless integration capabilities, a Streamlit frontend on port 7860 delivering an interactive web-based research environment, RESTful API endpoints designed for comprehensive system integration and automation workflows, real-time execution tracking with detailed workflow visualization to monitor process progress, and a responsive web interface optimized for various device types to ensure accessibility across desktop, tablet, and mobile platforms.
 

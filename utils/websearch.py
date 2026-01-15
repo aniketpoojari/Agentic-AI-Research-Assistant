@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
 from utils.config_loader import ConfigLoader
+from utils.cache import search_cache, content_cache
 from logger.logging import get_logger
 
 logger = get_logger(__name__)
@@ -13,28 +14,37 @@ logger = get_logger(__name__)
 
 class WebSearch:
     """Handles web search operations using multiple search providers."""
-    
+
     def __init__(self):
         try:
             self.config = ConfigLoader()
             self.timeout = self.config.get("search.timeout", 30)
             self.user_agent = self.config.get("search.user_agent", "Research Assistant Bot 1.0")
+            self.max_results = int(self.config.get_env("SEARCH_MAX_RESULTS", 5))
             self.session = requests.Session()
             self.session.headers.update({'User-Agent': self.user_agent})
             logger.info("WebSearch Utility Class Initialized")
-        
+
         except Exception as e:
             error_msg = f"Error in WebSearch Utility Class Initialization -> {str(e)}"
             raise Exception(error_msg)
         
     def search(self, query, num_results=None):
         """Search the web for the given query."""
-        
+
         try:
             if not query or not query.strip():
                 return []
-            
+
             num_results = num_results or self.max_results
+
+            # Check cache first
+            cache_key = f"search:{query}:{num_results}"
+            cached_results = search_cache.get(cache_key)
+            if cached_results is not None:
+                logger.info(f"Returning cached search results for: {query[:50]}...")
+                return cached_results
+
             logger.info(f"Starting web search for query: {query[:100]}...")
             
             # Try Tavily first if API key is available
@@ -44,19 +54,21 @@ class WebSearch:
                     results = self._search_tavily(query, num_results)
                     if results:
                         logger.info(f"Tavily search returned {len(results)} results")
+                        search_cache.set(cache_key, results, ttl=3600)  # Cache for 1 hour
                         return results
                 except Exception as e:
                     logger.warning(f"Tavily search failed: {e}")
-            
+
             # Try DuckDuckGo as fallback
             try:
                 results = self._search_duckduckgo(query, num_results)
                 if results:
                     logger.info(f"DuckDuckGo search returned {len(results)} results")
+                    search_cache.set(cache_key, results, ttl=3600)  # Cache for 1 hour
                     return results
             except Exception as e:
                 logger.warning(f"DuckDuckGo search failed: {e}")
-            
+
             # If all searches fail, return empty list
             logger.warning("All search providers failed")
             return []
@@ -93,11 +105,12 @@ class WebSearch:
             
             for result in data.get("results", []):
                 try:
+                    content = result.get("content", "")
                     search_result = {
                         "title": result.get("title", ""),
                         "url": result.get("url", ""),
-                        "content": result.get("content", ""),
-                        "snippet": result.get("content", "")[:200] + "..." if len(result.get("content", "")) > 200 else result.get("content", ""),
+                        "content": content,
+                        "snippet": content[:200] + "..." if len(content) > 200 else content,
                         "source": "tavily",
                         "score": result.get("score", 0.0)
                     }
@@ -171,34 +184,44 @@ class WebSearch:
     
     def get_page_content(self, url):
         """Extract text content from a web page."""
-        
+
         try:
             if not url or not url.strip():
                 return ""
-            
+
             # Validate URL
             parsed_url = urlparse(url)
             if not parsed_url.scheme or not parsed_url.netloc:
                 return ""
-            
+
+            # Check cache first
+            cache_key = f"content:{url}"
+            cached_content = content_cache.get(cache_key)
+            if cached_content is not None:
+                logger.info(f"Returning cached content for: {url[:50]}...")
+                return cached_content
+
             headers = {"User-Agent": self.user_agent}
             response = self.session.get(url, headers=headers, timeout=self.timeout)
             response.raise_for_status()
-            
+
             soup = BeautifulSoup(response.content, 'html.parser')
-            
+
             # Remove script and style elements
             for script in soup(["script", "style", "nav", "footer", "header"]):
                 script.decompose()
-            
+
             # Get text content
             text = soup.get_text()
-            
+
             # Clean up text
             lines = (line.strip() for line in text.splitlines())
             chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
             text = ' '.join(chunk for chunk in chunks if chunk)
-            
+
+            # Cache the content (2 hours TTL)
+            content_cache.set(cache_key, text, ttl=7200)
+
             logger.info(f"Extracted {len(text)} characters from {url}")
             return text
             
