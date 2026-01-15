@@ -3,7 +3,6 @@
 import streamlit as st
 import requests
 import uuid
-from datetime import datetime
 
 # API endpoint - use localhost when running in same container
 RESEARCH_ENDPOINT = "http://localhost:8000/research"
@@ -43,13 +42,8 @@ def make_api_request(payload):
 
 
 def save_to_chat_history(role, content):
-    """Save message to local chat history."""
-    message = {
-        "role": role,
-        "content": content,
-        "timestamp": datetime.now().isoformat()
-    }
-    st.session_state["chat_history"].append(message)
+    """Save message to local chat history for UI display."""
+    st.session_state["chat_history"].append({"role": role, "content": content})
 
 
 def display_execution_trace(trace):
