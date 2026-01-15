@@ -1,7 +1,7 @@
 """Summarization utility for the Dynamic Research Assistant."""
 
 import hashlib
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from utils.model_loader import ModelLoader
 from utils.cache import llm_cache
 from logger.logging import get_logger

@@ -1,6 +1,6 @@
 """Simple conversation memory tool for the Dynamic Research Assistant."""
 
-from langchain.tools import tool
+from langchain_core.tools import tool
 from logger.logging import get_logger
 
 logger = get_logger(__name__)

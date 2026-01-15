@@ -5,7 +5,7 @@ from prompt_library.prompt import SYSTEM_PROMPT, AGENT_PROMPT
 
 from langgraph.graph import StateGraph, MessagesState, END, START
 from langgraph.prebuilt import ToolNode, tools_condition
-from langchain.schema import HumanMessage, SystemMessage, AIMessage
+from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 
 # Import all tools
 from tools.web_search_tool import WebSearchTool

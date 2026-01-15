@@ -1,6 +1,6 @@
 """Summarization tool for the Dynamic Research Assistant."""
 
-from langchain.tools import tool
+from langchain_core.tools import tool
 from utils.summarizer import Summarizer
 from logger.logging import get_logger
 import json

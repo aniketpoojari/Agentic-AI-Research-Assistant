@@ -1,6 +1,6 @@
 """Web search tool for the Dynamic Research Assistant."""
 
-from langchain.tools import tool
+from langchain_core.tools import tool
 from utils.websearch import WebSearch
 from logger.logging import get_logger
 

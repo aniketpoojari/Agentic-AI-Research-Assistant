@@ -2,7 +2,9 @@ fastapi
 uvicorn[standard]
 streamlit
 langchain
+langchain-core
 langchain-groq
+langchain-text-splitters
 langgraph
 langsmith
 tavily-python
