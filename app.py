@@ -1,21 +1,12 @@
-"""Streamlit application for the Agentic Research Assistant."""
+"""Streamlit frontend for the Agentic Research Assistant."""
 
 import streamlit as st
+import requests
 import uuid
 from datetime import datetime
 
-from agent.agent_workflow import ResearchAssistantWorkflow
-from utils.config_loader import ConfigLoader
-
-# Initialize workflow (cached to avoid reloading on every interaction)
-@st.cache_resource
-def get_workflow():
-    """Initialize and cache the research workflow."""
-    config = ConfigLoader()
-    model_provider = config.get_env("MODEL_PROVIDER", "groq")
-    workflow = ResearchAssistantWorkflow(model_provider=model_provider)
-    workflow.build_graph()
-    return workflow
+# API endpoint - use localhost when running in same container
+RESEARCH_ENDPOINT = "http://localhost:8000/research"
 
 
 def initialize_session_state():
@@ -27,25 +18,28 @@ def initialize_session_state():
         st.session_state["chat_history"] = []
 
 
-def run_research(workflow, query: str, conversation_id: str, max_results: int):
-    """Run research query through the workflow."""
+def make_api_request(payload):
+    """Make API request to FastAPI backend."""
     try:
-        result = workflow.run_research(query, conversation_id, max_results)
-        execution_trace = workflow.get_execution_trace()
+        response = requests.post(
+            RESEARCH_ENDPOINT,
+            json=payload,
+            timeout=120,
+            headers={"Content-Type": "application/json"}
+        )
 
-        if result and result.get("messages"):
-            last_message = result["messages"][-1]
-            response_content = last_message.content if hasattr(last_message, 'content') else str(last_message)
+        if response.status_code == 200:
+            return response.json(), None
         else:
-            response_content = "No response generated"
+            error_msg = f"API Error {response.status_code}: {response.text}"
+            return None, error_msg
 
-        return {
-            "response": response_content,
-            "execution_trace": execution_trace
-        }, None
-
+    except requests.exceptions.Timeout:
+        return None, "Request timed out. Please try again."
+    except requests.exceptions.ConnectionError:
+        return None, "Could not connect to the API. Please wait for backend to start."
     except Exception as e:
-        return None, f"Error: {str(e)}"
+        return None, f"Request failed: {str(e)}"
 
 
 def save_to_chat_history(role, content):
@@ -59,7 +53,7 @@ def save_to_chat_history(role, content):
 
 
 def display_execution_trace(trace):
-    """Display simple execution trace."""
+    """Display execution trace."""
     if not trace:
         return
 
@@ -77,29 +71,19 @@ def display_execution_trace(trace):
 
 def main():
     """Main Streamlit application."""
-    # Page configuration
     st.set_page_config(
         page_title="Research Assistant",
         page_icon="🤖",
         layout="wide"
     )
 
-    # Initialize session state
     initialize_session_state()
-
-    # Initialize workflow
-    try:
-        workflow = get_workflow()
-    except Exception as e:
-        st.error(f"Failed to initialize workflow: {str(e)}")
-        st.info("Make sure GROQ_API_KEY and TAVILY_API_KEY are set in Secrets.")
-        return
 
     # Header
     st.title("🤖 Agentic Research Assistant")
     st.markdown("Ask any question and the AI will automatically decide which tools to use.")
 
-    # Sidebar for settings
+    # Sidebar
     with st.sidebar:
         st.header("Settings")
 
@@ -139,36 +123,30 @@ def main():
 
     # Chat input
     if prompt := st.chat_input("Ask your research question..."):
-        # Display user message immediately
         with st.chat_message("user"):
             st.write(prompt)
 
-        # Save user message to chat history
         save_to_chat_history("user", prompt)
 
-        # Show loading and get response
+        # Prepare API request
+        payload = {
+            "query": prompt,
+            "conversation_id": st.session_state["conversation_id"],
+            "max_results": max_results
+        }
+
         with st.chat_message("assistant"):
             with st.spinner("Thinking and selecting tools..."):
-                # Run research
-                data, error = run_research(
-                    workflow,
-                    prompt,
-                    st.session_state["conversation_id"],
-                    max_results
-                )
+                data, error = make_api_request(payload)
 
                 if error:
                     st.error(error)
                     save_to_chat_history("assistant", f"Error: {error}")
                 else:
-                    # Display response
                     response = data.get("response", "No response generated")
                     st.write(response)
-
-                    # Save assistant response to chat history
                     save_to_chat_history("assistant", response)
 
-                    # Display execution trace
                     execution_trace = data.get("execution_trace", [])
                     if execution_trace:
                         display_execution_trace(execution_trace)

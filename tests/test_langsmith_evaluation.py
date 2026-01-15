@@ -614,34 +614,26 @@ class LangSmithEvaluationSuite:
 
         # 6. Conversation Memory Tools
         print("\nTesting Conversation Memory Tools...")
-        test_session_id = f"test_{uuid.uuid4().hex[:8]}"
+        try:
+            # Set a session ID for testing
+            self.memory_tools.set_session_id(f"test_{uuid.uuid4().hex[:8]}")
+            self.memory_tools.add_message("user", "Test message")
 
-        for i, tool in enumerate(self.memory_tools.conversation_memory_tool_list):
-            tool_name = ["store_conversation", "get_conversation_history"][i]
-            try:
-                if tool_name == "store_conversation":
-                    result = tool.invoke({
-                        "conversation_id": test_session_id,
-                        "message": "Test message",
-                        "role": "user"
-                    })
-                else:
-                    result = tool.invoke({
-                        "conversation_id": test_session_id,
-                        "limit": 5
-                    })
-                success = result.get("success")
+            # Test get_conversation_history
+            tool = self.memory_tools.conversation_memory_tool_list[0]
+            result = tool.invoke({"limit": 5})
+            success = result.get("success") and result.get("message_count", 0) > 0
 
-                tool_tests.append({
-                    "tool": tool_name,
-                    "category": "memory",
-                    "status": "passed" if success else "failed",
-                    "details": {"has_result": bool(result)}
-                })
-                print(f"  {tool_name}: {'PASSED' if success else 'FAILED'}")
-            except Exception as e:
-                tool_tests.append({"tool": tool_name, "category": "memory", "status": "failed", "error": str(e)})
-                print(f"  {tool_name}: FAILED - {e}")
+            tool_tests.append({
+                "tool": "get_conversation_history",
+                "category": "memory",
+                "status": "passed" if success else "failed",
+                "details": {"message_count": result.get("message_count", 0)}
+            })
+            print(f"  get_conversation_history: {'PASSED' if success else 'FAILED'}")
+        except Exception as e:
+            tool_tests.append({"tool": "get_conversation_history", "category": "memory", "status": "failed", "error": str(e)})
+            print(f"  get_conversation_history: FAILED - {e}")
 
         # Summary
         passed = sum(1 for t in tool_tests if t["status"] == "passed")
