@@ -1,53 +1,60 @@
-# Contributing to Agentic AI Research Assistant
+# Contributing
 
-First off, thanks for taking the time to contribute! 🎉
-
-The following is a set of guidelines for contributing to the Agentic AI Research Assistant. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+Thanks for your interest in contributing! Here's how to get started.
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you agree to uphold it.
 
-## How Can I Contribute?
+## Development Setup
 
-### Reporting Bugs
+```bash
+git clone https://github.com/aniketpoojari/Agentic-AI-Research-Assistant.git
+cd Agentic-AI-Research-Assistant
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-This section guides you through submitting a bug report. Following these guidelines helps maintainers and the community understand your report, reproduce the behavior, and find related reports.
+Create a `.env` file with your API keys:
 
-- **Use a clear and descriptive title** for the issue to identify the problem.
-- **Describe the exact steps to reproduce the problem** in as many details as possible.
-- **Provide specific examples** to demonstrate the steps.
-- **Describe the behavior you observed** after following the steps and point out what exactly is the problem with that behavior.
-- **Explain which behavior you expected to see instead and why.**
+```ini
+GROQ_API_KEY=your_key
+TAVILY_API_KEY=your_key
+```
 
-### Suggesting Enhancements
+## Making Changes
 
-This section guides you through submitting an enhancement suggestion, including completely new features and minor improvements to existing functionality.
+1. Fork the repo and create a branch from `main`:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+2. Make your changes.
+3. Run the evaluation to verify nothing is broken:
+   ```bash
+   python evaluation/run_evaluation.py
+   ```
+4. Commit and push:
+   ```bash
+   git commit -m "Add your feature"
+   git push origin feature/your-feature
+   ```
+5. Open a Pull Request against `main`.
 
-- **Use a clear and descriptive title** for the issue to identify the suggestion.
-- **Provide a step-by-step description of the suggested enhancement** in as many details as possible.
-- **Explain why this enhancement would be useful** to most users.
+## Code Style
 
-### Pull Requests
+- Format with [Black](https://github.com/psf/black): `black .`
+- Lint with [flake8](https://flake8.pycqa.org/): `flake8 .`
+- Sort imports with [isort](https://pycqa.github.io/isort/): `isort .`
 
-1. Fork the repo and create your branch from `main`.
-2. If you've added code that should be tested, add tests.
-3. If you've changed APIs, update the documentation.
-4. Ensure the test suite passes.
-5. Make sure your code lints.
-6. Issue that pull request!
+## Reporting Bugs
 
-## Styleguides
+Use the [bug report template](https://github.com/aniketpoojari/Agentic-AI-Research-Assistant/issues/new?template=bug_report.md). Include:
 
-### Python Styleguide
+- Steps to reproduce
+- Expected vs actual behavior
+- Python version and OS
 
-- Use [Black](https://github.com/psf/black) for code formatting.
-- Use [Ruff](https://github.com/astral-sh/ruff) for linting.
-- Add docstrings to modules, classes, and functions.
+## Suggesting Features
 
-## Setting Up the Development Environment
-
-1. Clone the repository.
-2. Create a virtual environment: `python -m venv venv`
-3. Activate the environment.
-4. Install dependencies: `pip install -r requirements.txt`
+Use the [feature request template](https://github.com/aniketpoojari/Agentic-AI-Research-Assistant/issues/new?template=feature_request.md). Explain the problem and your proposed solution.

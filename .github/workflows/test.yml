@@ -83,7 +83,7 @@ jobs:
       - name: Run Ragas Benchmark
         id: benchmark
         run: |
-          python evaluation/run_evaluation.py | tee evaluation_output.txt
+          python -u evaluation/run_evaluation.py 2>&1 | tee evaluation_output.txt
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}

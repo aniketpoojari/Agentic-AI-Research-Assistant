@@ -1,148 +1,165 @@
-# 🧠 Agentic AI Research Assistant
+---
+title: Agentic AI Research Assistant
+emoji: 🧠
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_file: app.py
+pinned: false
+---
 
-[![CI](https://github.com/your-org/dynamic-research-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/dynamic-research-assistant/actions/workflows/ci.yml)
+# Agentic AI Research Assistant
+
+[![CI/CD Pipeline](https://github.com/aniketpoojari/Agentic-AI-Research-Assistant/actions/workflows/test.yml/badge.svg)](https://github.com/aniketpoojari/Agentic-AI-Research-Assistant/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![HuggingFace Space](https://img.shields.io/badge/HuggingFace-Space-orange)](https://huggingface.co/spaces/aniketp2009gmail/research-assistant-5)
 
-> **An autonomous research agent that doesn't just search—it reflects, verifies, and corrects itself to deliver 94% faithful results.**
+An autonomous research agent that searches, reflects, verifies, and corrects itself before delivering an answer. Built to reduce LLM hallucinations for research tasks.
 
-## 🧐 Why This Exists
+## The Problem
 
-Large Language Models (LLMs) are powerful but prone to **hallucinations**—confidently stating facts that aren't true. For research tasks, this is unacceptable.
+LLMs are prone to hallucinations -- confidently stating things that aren't true. For research tasks, this is unacceptable.
 
-We built the **Agentic AI Research Assistant** to solve this. Instead of a linear "search -> answer" process, our agent uses a **circular self-reflection loop**:
-1.  **Generates** a draft response based on web search.
-2.  **Critiques** its own work, checking every claim against retrieved evidence.
-3.  **Refines** and re-searches if confidence is low (< 0.7).
+## The Solution
 
-**The Result:** In our benchmarks against a standard GPT-4 class model (Llama 3.3 70B), this agentic approach achieved **94% Context Precision** compared to the baseline's 89%, significantly reducing hallucinations.
+Instead of a linear "search then answer" pipeline, this agent uses a **self-reflection loop** powered by [LangGraph](https://github.com/langchain-ai/langgraph):
 
-## 🏗️ Architecture
+1. **Generate** -- draft a response from web search results
+2. **Critique** -- check every claim against retrieved evidence
+3. **Refine** -- re-search and revise if confidence is below 0.7
 
-The system is built on **LangGraph**, enabling a stateful, cyclic workflow.
+## Architecture
 
 ```mermaid
 graph TD
     Start([User Query]) --> Agent
     Agent{{Decide Action}}
-    
+
     Agent -->|Needs Info| Tools[Web Search / Summarize]
     Tools --> Agent
-    
+
     Agent -->|Draft Response| Critic[Self-Reflection Node]
-    
+
     Critic -->|Confidence < 0.7| Agent
     Critic -->|Confidence >= 0.7| Final([Final Response])
-    
-    subgraph "Reflection Loop"
+
+    subgraph Reflection Loop
     Critic -.->|Feedback + Retry| Agent
     end
 ```
 
-## 📊 Benchmarks
+## Tech Stack
 
-We compared our Agentic workflow against a standard RAG implementation using Llama-3.3-70B.
+| Component | Technology |
+|-----------|-----------|
+| Agent framework | LangGraph |
+| LLM | Groq (Llama 3.x) |
+| Web search | Tavily / DuckDuckGo |
+| Evaluation | Ragas |
+| Tracing | LangSmith |
+| Backend API | FastAPI |
+| Frontend | Streamlit |
+| Deployment | Docker, HuggingFace Spaces |
+| CI/CD | GitHub Actions |
 
-| Metric | Research Agent | Baseline (Llama 3.3 70B) | Improvement |
-|--------|----------------|--------------------------|-------------|
-| **Context Precision** | **0.94** | 0.89 | +5.6% |
-| **Faithfulness** | **0.91** | 0.87 | +4.6% |
-| **Answer Relevancy** | 0.89 | **0.92** | -3.2% |
+## Quick Start
 
-*Note: Benchmarks run on 50 diverse queries (Factual, Reasoning, Multi-hop) using Ragas.*
+```bash
+# Clone
+git clone https://github.com/aniketpoojari/Agentic-AI-Research-Assistant.git
+cd Agentic-AI-Research-Assistant
 
-## 🚀 Quick Start
+# Install
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
 
-1.  **Clone the repo**
-    ```bash
-    git clone https://github.com/your-org/dynamic-research-assistant.git
-    cd dynamic-research-assistant
-    ```
+# Configure
+cp .env.example .env
+# Edit .env with your API keys (see Environment Variables below)
 
-2.  **Install dependencies**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # or venv\Scripts\activate on Windows
-    pip install -r requirements.txt
-    ```
-
-3.  **Configure Environment**
-    Create a `.env` file:
-    ```ini
-    GROQ_API_KEY=your_key_here
-    TAVILY_API_KEY=your_key_here
-    MODEL_NAME=llama-3.3-70b-versatile
-    ```
-
-4.  **Run the API**
-    ```bash
-    uvicorn main:app --reload
-    ```
-
-5.  **Test it**
-    Open `http://localhost:8000/docs` or run the test script:
-    ```bash
-    python test_reflection.py
-    ```
-
-## 📘 API Documentation
-
-The assistant provides a RESTful API via FastAPI.
-
-### `POST /research`
-Executes a full research workflow.
-
-**Request:**
-```json
-{
-  "query": "What are the latest breakthroughs in solid-state batteries?",
-  "max_results": 5
-}
+# Run
+uvicorn main:app --reload          # API at http://localhost:8000
+streamlit run app.py               # UI at http://localhost:8501
 ```
 
-**Response:**
-```json
-{
-  "response": "Recent breakthroughs in 2024-2025 include...",
-  "reflection_logs": [
-    {
-      "original_response": "...",
-      "confidence_score": 0.6,
-      "is_hallucinating": true,
-      "reasoning": "Claim about Toyota's release date contradicts context."
-    },
-    {
-      "confidence_score": 0.95,
-      "is_hallucinating": false
-    }
-  ]
-}
+### Docker
+
+```bash
+docker build -t research-assistant .
+docker run -p 7860:7860 -p 8000:8000 \
+  -e GROQ_API_KEY=your_key \
+  -e TAVILY_API_KEY=your_key \
+  research-assistant
 ```
 
-### `GET /reflection-stats`
-Returns system-wide performance metrics.
+## Environment Variables
 
-```json
-{
-  "total_queries": 142,
-  "average_retries": 0.3,
-  "confidence_distribution": {
-    "0.8-1.0": 120
-  }
-}
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `GROQ_API_KEY` | Yes | Groq API key for LLM inference |
+| `TAVILY_API_KEY` | Yes | Tavily API key for web search |
+| `MODEL_NAME` | No | Model name (default: `llama-3.1-8b-instant`) |
+| `LANGCHAIN_API_KEY` | No | LangSmith API key for tracing |
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/research` | Run a research query |
+| `POST` | `/research/stream` | Stream research results (SSE) |
+| `GET` | `/health` | Health check |
+| `GET` | `/reflection-stats` | Self-reflection metrics |
+| `GET` | `/cache/stats` | Cache hit rates |
+| `GET` | `/metrics` | Performance metrics |
+
+### Example Request
+
+```bash
+curl -X POST http://localhost:8000/research \
+  -H "Content-Type: application/json" \
+  -d '{"query": "What are the latest breakthroughs in solid-state batteries?", "max_results": 5}'
 ```
 
-## 🤝 Contributing
+## Evaluation
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+The project includes two evaluation systems:
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+- **`evaluation/`** -- Ragas evaluation that scores the agent on faithfulness, relevancy, context precision, and recall. Runs automatically in CI via GitHub Actions.
+- **`benchmarking/`** -- Comparative benchmark that tests the agent head-to-head against a baseline LLM on the same queries.
 
-## 📄 License
+```bash
+# Run evaluation
+python evaluation/run_evaluation.py
 
-Distributed under the MIT License. See `LICENSE` for more information.
+# Run comparative benchmark
+python -m benchmarking.benchmark --num 10
+```
+
+## Project Structure
+
+```
+.
+├── agent/              # LangGraph agent workflow
+├── app.py              # Streamlit frontend
+├── benchmarking/       # Agent vs baseline comparison
+├── config/             # YAML configuration
+├── evaluation/         # Ragas evaluation + test queries
+├── logger/             # Logging setup
+├── main.py             # FastAPI backend
+├── models/             # Model definitions
+├── prompt_library/     # System prompts
+├── tools/              # LangChain tool wrappers
+├── utils/              # Config loader, web search, cache
+├── Dockerfile          # Multi-stage Docker build
+└── requirements.txt    # Python dependencies
+```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## License
+
+MIT -- see [LICENSE](LICENSE) for details.
