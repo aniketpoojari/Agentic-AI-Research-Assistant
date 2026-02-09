@@ -92,14 +92,14 @@ jobs:
           LANGCHAIN_TRACING_V2: 'true'
           LANGCHAIN_PROJECT: "research-assistant-benchmark-${{ github.run_number }}"
           LANGSMITH_API_KEY: ${{ secrets.LANGCHAIN_API_KEY }}
-          EVAL_MAX_QUERIES: '2'
+          EVAL_MAX_QUERIES: '1'
 
       - name: Evaluation Summary
         if: always()
         run: |
           echo "## Ragas Evaluation Results" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
-          sed -n '/EVALUATION SUMMARY/,/=/p' evaluation_output.txt >> $GITHUB_STEP_SUMMARY
+          sed -n '/EVALUATION SUMMARY/,$p' evaluation_output.txt >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
 
       - name: Upload evaluation results
@@ -122,23 +122,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Free up disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache
+          docker system prune -af
+          df -h
 
       - name: Build Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: false
-          tags: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+        run: docker build -t ${{ env.DOCKER_IMAGE }}:test .
 
       - name: Test Docker image health
         run: |
-          # Build and run container
-          docker build -t ${{ env.DOCKER_IMAGE }}:test .
-
           # Start container in background
           docker run -d --name test-container \
             -p 8000:8000 \
