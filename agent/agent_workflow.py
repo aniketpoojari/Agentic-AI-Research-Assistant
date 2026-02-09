@@ -29,7 +29,7 @@ Categories:
 - none: Greetings, casual chat, simple questions answerable without tools (e.g. "hello", "how are you", "what is 2+2")
 - memory: User references past conversation (e.g. "what did I ask before", "expand on that", "my previous question")
 - search: Research queries needing web search (e.g. "what is quantum computing", "latest news on AI")
-- all: Complex research needing analysis, fact-checking, citations, or data extraction
+- all: Complex research needing analysis, fact-checking, citations, or data extraction (avoid unless absolutely necessary)
 
 Query: {query}
 Category:"""
@@ -61,6 +61,14 @@ class ResearchAssistantWorkflow:
             # Tool groups by intent
             memory_tools = self.memory_tools.conversation_memory_tool_list
             search_tools = self.web_search_tools.web_search_tool_list + memory_tools
+            # "all" uses search + fact-checking + summarization (keeps token count manageable)
+            research_tools = (
+                self.web_search_tools.web_search_tool_list
+                + self.summarization_tools.summarization_tool_list
+                + self.fact_checking_tools.fact_checking_tool_list
+                + memory_tools
+            )
+            # Full list needed for ToolNode to resolve any tool call
             all_tools = (
                 self.web_search_tools.web_search_tool_list
                 + self.summarization_tools.summarization_tool_list
@@ -74,7 +82,7 @@ class ResearchAssistantWorkflow:
                 "none": [],
                 "memory": memory_tools,
                 "search": search_tools,
-                "all": all_tools,
+                "all": research_tools,
             }
             # Flat list of all tools (needed for ToolNode)
             self.tools = all_tools
