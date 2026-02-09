@@ -16,3 +16,7 @@ PyYAML
 python-multipart
 aiofiles
 huggingface-hub
+langchain-huggingface
+ragas
+datasets
+sentence-transformers

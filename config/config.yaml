@@ -1,4 +1,6 @@
-# API Configurati# Search Configuration
+# API Configuration
+
+# Search Configuration
 search:
   timeout: 30
   user_agent: "Research Assistant Bot"

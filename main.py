@@ -16,7 +16,6 @@ from typing import Dict, Any, AsyncGenerator
 from concurrent.futures import ThreadPoolExecutor
 import asyncio
 import uuid
-import uvicorn
 import json
 from datetime import datetime
 
@@ -100,11 +99,12 @@ def run_research_sync(workflow, query: str, conversation_id: str, max_results: i
     result = workflow.run_research(query, conversation_id, max_results)
     execution_trace = workflow.get_execution_trace()
 
+    response_content = "No response generated"
     if result and result.get("messages"):
-        last_message = result["messages"][-1]
-        response_content = last_message.content if hasattr(last_message, 'content') else str(last_message)
-    else:
-        response_content = "No response generated"
+        for msg in reversed(result["messages"]):
+            if hasattr(msg, 'content') and msg.content and isinstance(msg.content, str) and msg.content.strip():
+                response_content = msg.content
+                break
 
     return {
         "response": response_content,
@@ -123,10 +123,22 @@ async def root():
             "research": "/research",
             "stream": "/research/stream",
             "health": "/health",
-            "cache_stats": "/cache/stats"
+            "cache_stats": "/cache/stats",
+            "reflection_stats": "/reflection-stats"
         },
         "timestamp": datetime.now().isoformat()
     }
+
+
+@app.get("/reflection-stats")
+async def reflection_stats():
+    """Get self-reflection and hallucination catching statistics."""
+    if workflow_instance:
+        return {
+            "stats": workflow_instance.get_reflection_stats(),
+            "timestamp": datetime.now().isoformat()
+        }
+    return {"error": "Workflow not initialized"}
 
 
 @app.get("/health")
@@ -344,24 +356,3 @@ async def metrics():
     }
 
 
-if __name__ == "__main__":
-    try:
-        config = ConfigLoader()
-        host = config.get_env("API_HOST", "127.0.0.1")
-        port = int(config.get_env("API_PORT", 8000))
-
-        logger.info(f"Starting server on {host}:{port}")
-
-        uvicorn.run(
-            "main:app",
-            host=host,
-            port=port,
-            reload=True,
-            log_level="info",
-            workers=1
-        )
-
-    except Exception as e:
-        error_msg = f"Failed to start server: {str(e)}"
-        logger.error(error_msg)
-        raise Exception(error_msg)

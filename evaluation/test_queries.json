@@ -1,0 +1,252 @@
+[
+  {
+    "query": "What is the capital of France?",
+    "ground_truth": "The capital of France is Paris.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who wrote 'To Kill a Mockingbird'?",
+    "ground_truth": "Harper Lee wrote 'To Kill a Mockingbird'.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the boiling point of water at sea level?",
+    "ground_truth": "The boiling point of water at sea level is 100 degrees Celsius or 212 degrees Fahrenheit.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who is the current CEO of Microsoft?",
+    "ground_truth": "As of early 2026, Satya Nadella is the CEO of Microsoft.",
+    "category": "Factual"
+  },
+  {
+    "query": "What represents the letter 'O' in the periodic table?",
+    "ground_truth": "Oxygen represents the letter 'O' in the periodic table.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who won the FIFA World Cup in 2022?",
+    "ground_truth": "Argentina won the FIFA World Cup in 2022.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the speed of light in a vacuum?",
+    "ground_truth": "The speed of light in a vacuum is approximately 299,792,458 meters per second.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who painted the Mona Lisa?",
+    "ground_truth": "Leonardo da Vinci painted the Mona Lisa.",
+    "category": "Factual"
+  },
+  {
+    "query": "What represents the chemical symbol 'Au'?",
+    "ground_truth": "Gold represents the chemical symbol 'Au'.",
+    "category": "Factual"
+  },
+  {
+    "query": "Which planet is known as the Red Planet?",
+    "ground_truth": "Mars is known as the Red Planet.",
+    "category": "Factual"
+  },
+  {
+    "query": "How does the population of Tokyo compare to New York City?",
+    "ground_truth": "Tokyo has a larger population than New York City. Tokyo's metropolitan area has over 37 million people, while New York City's metropolitan area has around 20 million.",
+    "category": "Reasoning"
+  },
+  {
+    "query": "Who was president of the US when the first iPhone was released?",
+    "ground_truth": "George W. Bush was the president of the US when the first iPhone was released in June 2007.",
+    "category": "Multi-hop"
+  },
+  {
+    "query": "Which movie won Best Picture the year formerly Prince Charles became King?",
+    "ground_truth": "King Charles III became King in September 2022. Everything Everywhere All At Once won Best Picture at the Oscars in early 2023 (for the 2022 film year), or CODA won in early 2022. Usually refers to the ceremony following the event.",
+    "category": "Multi-hop"
+  },
+  {
+    "query": "Is it cheaper to live in London or Berlin?",
+    "ground_truth": "Generally, Berlin is cheaper to live in than London, especially regarding rent and public transport costs.",
+    "category": "Reasoning"
+  },
+  {
+    "query": "Compare the battery life of the iPhone 15 Pro and Samsung Galaxy S24.",
+    "ground_truth": "Both phones have competitive battery lives, typically lasting a full day of use. The S24 Ultra often edges out in longevity due to a larger battery, but the standard models are comparable.",
+    "category": "Synthesis"
+  },
+  {
+    "query": "What are the main differences between Python and Java?",
+    "ground_truth": "Python is dynamically typed and interpreted, known for conciseness. Java is statically typed and compiled, known for performance and strict syntax.",
+    "category": "Synthesis"
+  },
+  {
+    "query": "Explain the concept of quantum entanglement to a 5 year old.",
+    "ground_truth": "Quantum entanglement is like having two magic dice. No matter how far apart they are, if you roll a 6 on one, the other one will also show a 6 instantly.",
+    "category": "Synthesis"
+  },
+  {
+    "query": "What are the health benefits of green tea vs black tea?",
+    "ground_truth": "Green tea is higher in antioxidants like EGCG. Black tea is fermented and has more caffeine. Both support heart health.",
+    "category": "Synthesis"
+  },
+  {
+    "query": "Did the Great Wall of China prevent the Mongol invasion?",
+    "ground_truth": "No, the Great Wall did not fully prevent the Mongol invasion; Genghis Khan and his successors were able to bypass or breach it.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the tallest building in the world?",
+    "ground_truth": "The Burj Khalifa in Dubai is the tallest building in the world.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who directed the movie 'Inception'?",
+    "ground_truth": "Christopher Nolan directed 'Inception'.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the currency of Japan?",
+    "ground_truth": "The currency of Japan is the Japanese Yen.",
+    "category": "Factual"
+  },
+  {
+    "query": "Which element has the atomic number 1?",
+    "ground_truth": "Hydrogen has the atomic number 1.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the main ingredient in guacamole?",
+    "ground_truth": "Avocado is the main ingredient in guacamole.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who discovered penicillin?",
+    "ground_truth": "Alexander Fleming discovered penicillin.",
+    "category": "Factual"
+  },
+  {
+    "query": "What year did the Titanic sink?",
+    "ground_truth": "The Titanic sank in 1912.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the largest ocean on Earth?",
+    "ground_truth": "The Pacific Ocean is the largest ocean on Earth.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who is the author of 'Harry Potter'?",
+    "ground_truth": "J.K. Rowling is the author of the 'Harry Potter' series.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the capital of Australia?",
+    "ground_truth": "Canberra is the capital of Australia.",
+    "category": "Factual"
+  },
+  {
+    "query": "Which country invented paper?",
+    "ground_truth": "China is credited with the invention of paper.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the hardest natural substance on Earth?",
+    "ground_truth": "Diamond is the hardest natural substance on Earth.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who was the first person to walk on the moon?",
+    "ground_truth": "Neil Armstrong was the first person to walk on the moon.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the primary gas in the Earth's atmosphere?",
+    "ground_truth": "Nitrogen is the primary gas in the Earth's atmosphere.",
+    "category": "Factual"
+  },
+  {
+    "query": "What are the colors of the rainbow?",
+    "ground_truth": "Red, orange, yellow, green, blue, indigo, and violet (ROYGBIV).",
+    "category": "Factual"
+  },
+  {
+    "query": "Who painted the 'Starry Night'?",
+    "ground_truth": "Vincent van Gogh painted 'Starry Night'.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the capital of Canada?",
+    "ground_truth": "Ottawa is the capital of Canada.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who developed the theory of relativity?",
+    "ground_truth": "Albert Einstein developed the theory of relativity.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the longest river in the world?",
+    "ground_truth": "The Nile River is traditionally considered the longest, though some argue for the Amazon.",
+    "category": "Factual"
+  },
+  {
+    "query": "Which animal is the largest mammal?",
+    "ground_truth": "The Blue Whale is the largest mammal.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the square root of 64?",
+    "ground_truth": "The square root of 64 is 8.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who is the 'King of Pop'?",
+    "ground_truth": "Michael Jackson is known as the 'King of Pop'.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the capital of Italy?",
+    "ground_truth": "Rome is the capital of Italy.",
+    "category": "Factual"
+  },
+  {
+    "query": "Which planet is closest to the Sun?",
+    "ground_truth": "Mercury is the planet closest to the Sun.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the chemical formula for water?",
+    "ground_truth": "H2O is the chemical formula for water.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who wrote 'Romeo and Juliet'?",
+    "ground_truth": "William Shakespeare wrote 'Romeo and Juliet'.",
+    "category": "Factual"
+  },
+  {
+    "query": "What is the largest continent?",
+    "ground_truth": "Asia is the largest continent.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who was the first President of the United States?",
+    "ground_truth": "George Washington was the first President of the United States.",
+    "category": "Factual"
+  },
+  {
+    "query": "What represents the number 100 in Roman numerals?",
+    "ground_truth": "C represents the number 100 in Roman numerals.",
+    "category": "Factual"
+  },
+  {
+    "query": "Who invented the telephone?",
+    "ground_truth": "Alexander Graham Bell is credited with inventing the telephone.",
+    "category": "Factual"
+  },
+  {
+    "query": "Does the sun orbit the earth?",
+    "ground_truth": "No, the Earth orbits the Sun.",
+    "category": "Factual"
+  }
+]

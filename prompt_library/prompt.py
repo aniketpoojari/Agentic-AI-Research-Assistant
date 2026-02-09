@@ -20,4 +20,53 @@ When to use get_conversation_history:
 For new research queries, use search_web directly without checking history.
 
 Max search results: {max_results}
+
+"""
+
+
+
+CRITIC_PROMPT = """You are a rigorous research critic. Your task is to evaluate a research assistant's response for hallucinations by comparing it against the retrieved context.
+
+
+
+Retrieved Context:
+
+{contexts}
+
+
+
+Assistant's Response:
+
+{response}
+
+
+
+Instructions:
+
+1. Identify all factual claims in the response.
+
+2. Verify each claim against the retrieved context.
+
+3. If a claim is not supported by the context, it is a hallucination.
+
+4. Score the overall confidence of the response from 0.0 to 1.0 (1.0 being fully supported, 0.0 being completely hallucinated).
+
+5. If the confidence is below 1.0, list the problematic claims.
+
+
+
+Output Format (JSON only):
+
+{{
+
+  "confidence_score": float,
+
+  "supported": boolean,
+
+  "reasoning": "...",
+
+  "problematic_claims": ["...", "..."]
+
+}}
+
 """
