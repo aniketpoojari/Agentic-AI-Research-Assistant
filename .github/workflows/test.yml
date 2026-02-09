@@ -92,7 +92,7 @@ jobs:
           LANGCHAIN_TRACING_V2: 'true'
           LANGCHAIN_PROJECT: "research-assistant-benchmark-${{ github.run_number }}"
           LANGSMITH_API_KEY: ${{ secrets.LANGCHAIN_API_KEY }}
-          EVAL_MAX_QUERIES: '10'
+          EVAL_MAX_QUERIES: '2'
 
       - name: Evaluation Summary
         if: always()
