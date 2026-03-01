@@ -77,8 +77,8 @@ def run_benchmark(num_queries=5):
     print("Initializing Agent...")
     agent = ResearchAssistantWorkflow(model_provider="groq")
     
-    # Initialize Baseline Groq Model (Llama 3.3 70b)
-    baseline_model_name = "llama-3.3-70b-versatile"
+    # Initialize Baseline Groq Model
+    baseline_model_name = "openai/gpt-oss-120b"
     print(f"Initializing Baseline Model ({baseline_model_name})...")
     baseline_llm = ChatGroq(
         groq_api_key=api_key,
@@ -111,7 +111,7 @@ def run_benchmark(num_queries=5):
         else:
             failed_queries.append(item["query"])
         # Delay between queries to avoid rate limits
-        time.sleep(2)
+        time.sleep(10)
 
     if failed_queries:
         print(f"\n{len(failed_queries)} queries failed: {failed_queries}")

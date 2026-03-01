@@ -15,19 +15,21 @@ pinned: false
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![HuggingFace Space](https://img.shields.io/badge/HuggingFace-Space-orange)](https://huggingface.co/spaces/aniketp2009gmail/research-assistant-5)
 
-An autonomous research agent that searches, reflects, verifies, and corrects itself before delivering an answer. Built to reduce LLM hallucinations for research tasks.
+An autonomous AI agent built to tackle one of the biggest problems with LLMs: **hallucinations**. 
 
-## The Problem
+When doing research, you can't afford confidently stated incorrect facts. This agent solves that by searching the web, evaluating its own findings, and fixing its mistakes *before* giving you an answer.
 
-LLMs are prone to hallucinations -- confidently stating things that aren't true. For research tasks, this is unacceptable.
+**🚀 Try it live on Hugging Face Spaces: [Agentic AI Research Assistant](https://huggingface.co/spaces/aniketp2009gmail/research-assistant-5)**
 
-## The Solution
+---
 
-Instead of a linear "search then answer" pipeline, this agent uses a **self-reflection loop** powered by [LangGraph](https://github.com/langchain-ai/langgraph):
+## How It Works
 
-1. **Generate** -- draft a response from web search results
-2. **Critique** -- check every claim against retrieved evidence
-3. **Refine** -- re-search and revise if confidence is below 0.7
+Instead of a simple "prompt -> response" pipeline, this agent uses a **self-reflection loop** (powered by LangGraph):
+
+1. **Generate**: It drafts an initial response using web search results.
+2. **Critique**: It fact-checks every single claim it just made against the real web evidence.
+3. **Refine**: If it isn't completely confident (score < 0.7), it goes back to search for more data and rewrites its answer.
 
 ## Architecture
 
